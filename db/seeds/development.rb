@@ -1,0 +1,12 @@
+admin = User.create(:email => 'admin@bcj.com', :first_name => "Josh", :last_name => "Goodbelly", :password => 'testeroo', :password_confirmation => 'testeroo', :roles => [:admin])
+brewer = User.create(:email => 'brewer@bcj.com', :first_name => "Phil", :last_name => "Sunderson", :password => 'testeroo', :password_confirmation => 'testeroo', :roles => [:brewer])
+sales = User.create(:email => 'sales@bcj.com', :first_name => "Tania", :last_name => "Tazmania", :password => 'testeroo', :password_confirmation => 'testeroo', :roles => [:sales])
+
+cust1 = Customer.create(:name => 'test1', :user_id => 1, :distributor_id => 2, :price_tier_id => 1)
+cust2 = Customer.create(:name => 'test2', :user_id => 1, :distributor_id => 2, :price_tier_id => 1)
+cust3 = Customer.create(:name => 'test3', :user_id => 1, :distributor_id => 2, :price_tier_id => 1)
+cust4 = Customer.create(:name => 'test4', :user_id => 1, :distributor_id => 2, :price_tier_id => 1)
+cust1.states.create(:state_id => 0)
+cust2.states.create(:state_id => 1)
+cust3.states.create(:state_id => 2)
+cust4.states.create(:state_id => 2)

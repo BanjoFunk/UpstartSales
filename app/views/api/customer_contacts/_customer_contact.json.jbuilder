@@ -1,0 +1,9 @@
+json.id customer_contact.id
+json.customer_id customer_contact.customer_id
+json.primary customer_contact.primary
+json.first_name customer_contact.first_name
+json.last_name customer_contact.last_name
+json.phone customer_contact.phone
+json.email customer_contact.email
+json.position customer_contact.position
+json.created_at customer_contact.created_at

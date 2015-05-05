@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title Upstart Sales Console
+    %base{:href => "/"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body{"ng-app" => "UpstartSales", "ng-controller" => 'AppCtrl', "ng-strict-di"=>""}
+    %span.notice= notice
+    %span.alert= alert
+    = yield

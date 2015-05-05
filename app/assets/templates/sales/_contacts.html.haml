@@ -1,0 +1,32 @@
+.contacts-container{"ng-controller" => "ContactsCtrl"}
+  %ul
+    %div{'ng-repeat'=>'contact in selectedCustomer.contacts'}
+      %span first name: {{contact.first_name}}
+      %br
+      %span last name: {{contact.last_name}}
+      %br
+      %span email: {{contact.email}}
+      %br
+      %span phone: {{contact.phone}}
+      %br
+      %span position: {{contact.position}}
+      %hr
+  %br
+  %form.simple-form{:novalidate => ""}
+    %br
+    First Name:
+    %input{"ng-model" => "newContactInfo.first_name", :type => "text"}
+    %br
+    Last Name:
+    %input{"ng-model" => "newContactInfo.last_name", :type => "text"}
+    %br
+    E-mail:
+    %input{"ng-model" => "newContactInfo.email", :type => "email"}
+    %br
+    Phone:
+    %input{"ng-model" => "newContactInfo.phone", :type => "text"}
+    %br
+    Position:
+    %input{"ng-model" => "newContactInfo.position", :type => "text"}
+    %br
+    %input{"ng-click" => "newContact(newContactInfo)", :type => "submit", :value => "Save"}

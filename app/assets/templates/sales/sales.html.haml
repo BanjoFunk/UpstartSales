@@ -1,0 +1,104 @@
+#navbar{'ng-include'=>"'navbar/show.html'"}
+%alerts
+.sales-tracker-container
+  .row
+    .col-md-12{:style=>'text-align: center;'}
+      %h1{style: 'color:white; font-size:30px;'} Upstart Sales Tracker
+      %button.btn.btn-primary.pull-right.customer-form-toggle.hidden-cust-form{style: "position:absolute; top:0; right:30px;", :tabindex=>1} New Customer
+      .hidden-cust-form.input-group{style:'width:400px;position:absolute; top:0px; right:30px; display:none;'}
+        %input.form-control#new-customer-name{"aria-describedby"=>"new-customer-name", :placeholder=>"Customer Name", :type => "text", :name => "newCustomerName", "ng-model"=>"newCustomerName"}
+        %div.input-group-btn
+          %button.btn.btn-primary{"ng-click"=>"addCustomer()", :type=>"submit"}
+            &nbsp;Submit&nbsp;
+          %button#cancel-customer-name.btn.btn-danger.customer-form-toggle{"aria-label" => 'cancel'}
+            %span.glyphicon.glyphicon-remove
+  %br
+  .row.text-center
+    .col-md-12
+      .col-md-3
+        .well.drop-column
+          %h2 Idea
+          #idea-sort.ui-sortable.connectedSortable
+            .customers_container{"ng-repeat" => "customer in states['idea'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
+              .panel.panel-info.text-left
+                .panel-heading
+                  %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
+                    {{customer.name}}
+                  %span.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                    show
+                .panel-body{:style => "display:none;"}
+                  Panel content
+      .col-md-3
+        .well.drop-column
+          %h2 Contact
+          #contacted-sort.ui-sortable.connectedSortable
+            .customers_container{"ng-repeat" => "customer in states['contacted'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
+              .panel.panel-info.text-left
+                .panel-heading
+                  %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
+                    {{customer.name}}
+                  %span.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                    show
+                .panel-body{:style => "display:none;"}
+                  Panel content
+      .col-md-3
+        .well.drop-column
+          %h2 Negotiation
+          #negotiation-sort.ui-sortable.connectedSortable
+            .customers_container{"ng-repeat" => "customer in states['negotiation'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
+              .panel.panel-info.text-left
+                .panel-heading
+                  %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
+                    {{customer.name}}
+                  %span.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                    show
+                .panel-body{:style => "display:none;"}
+                  Panel content
+      .col-md-3
+        .well.drop-column
+          %h2 Active
+          #active-sort.ui-sortable.connectedSortable
+            .customers_container{"ng-repeat" => "customer in states['active'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
+              .panel.panel-info.text-left
+                .panel-heading
+                  %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
+                    {{customer.name}}
+                  %span.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                    show
+                .panel-body{:style => "display:none;"}
+                  Panel content
+
+
+
+  %modal{:title=>'test', :visible=>"$parent.showModal"}
+    .modal-header.text-center
+      %button.close{"aria-hidden"=>"true", "data-dismiss"=>"modal", :type=>"button", 'ng-click'=>'hideModal()'} ×
+      %h2.modal-title
+        {{selectedCustomer.name}}
+    .modal-body
+
+      %ul.nav.nav-tabs
+        %li{:role=>"customer_details", 'ng-click'=>'detailsNav("overview")', 'ng-class'=>'{active: details_category=="overview"}'}
+          %a{:href=>"#"} Overview
+        %li{:role=>"customer_details", 'ng-click'=>'detailsNav("contacts")', 'ng-class'=>'{active: details_category=="contacts"}'}
+          %a{:href=>"#"} Contacts
+        %li{:role=>"customer_details", 'ng-click'=>'detailsNav("locations")', 'ng-class'=>'{active: details_category=="locations"}'}
+          %a{:href=>"#"} Locations
+        %li{:role=>"customer_details", 'ng-click'=>'detailsNav("communications")', 'ng-class'=>'{active: details_category=="communications"}'}
+          %a{:href=>"#"} Communications Log
+        %li{:role=>"customer_details", 'ng-click'=>'detailsNav("comments")', 'ng-class'=>'{active: details_category=="comments"}'}
+          %a{:href=>"#"} Comments
+
+
+      .customer-details{'ng-show'=>'details_category == "overview"'}
+        #overview{'ng-include'=>"'sales/_overview.html'"}
+      .customer-details{'ng-show'=>'details_category == "contacts"'}
+        #contacts{'ng-include'=>"'sales/_contacts.html'"}
+      .customer-details{'ng-show'=>'details_category == "locations"'}
+        #locations{'ng-include'=>"'sales/_locations.html'"}
+      .customer-details{'ng-show'=>'details_category == "communications"'}
+        #settings{'ng-include'=>"'sales/_communications.html'"}
+      .customer-details{'ng-show'=>'details_category == "comments"'}
+        #settings{'ng-include'=>"'sales/_comments.html'"}
+
+
