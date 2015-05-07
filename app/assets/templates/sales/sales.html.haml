@@ -2,7 +2,7 @@
 %alerts
 .sales-tracker-container
   .row
-    .col-md-12{:style=>'text-align: center;'}
+    .col-md-12.text-center
       %h1{style: 'color:white; font-size:30px;'} Upstart Sales Tracker
       %button.btn.btn-primary.pull-right.customer-form-toggle.hidden-cust-form{style: "position:absolute; top:0; right:30px;", :tabindex=>1} New Customer
       .hidden-cust-form.input-group{style:'width:400px;position:absolute; top:0px; right:30px; display:none;'}
@@ -12,11 +12,10 @@
             &nbsp;Submit&nbsp;
           %button#cancel-customer-name.btn.btn-danger.customer-form-toggle{"aria-label" => 'cancel'}
             %span.glyphicon.glyphicon-remove
-  %br
-  .row.text-center
+  .row
     .col-md-12
-      .col-md-3
-        .well.drop-column
+      .text-center.equal-columns-container
+        .col-md-3.equal-column.well
           %h2 Idea
           #idea-sort.ui-sortable.connectedSortable
             .customers_container{"ng-repeat" => "customer in states['idea'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
@@ -28,8 +27,7 @@
                     show
                 .panel-body{:style => "display:none;"}
                   Panel content
-      .col-md-3
-        .well.drop-column
+        .col-md-3.equal-column.well
           %h2 Contact
           #contacted-sort.ui-sortable.connectedSortable
             .customers_container{"ng-repeat" => "customer in states['contacted'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
@@ -41,8 +39,7 @@
                     show
                 .panel-body{:style => "display:none;"}
                   Panel content
-      .col-md-3
-        .well.drop-column
+        .col-md-3.equal-column.well
           %h2 Negotiation
           #negotiation-sort.ui-sortable.connectedSortable
             .customers_container{"ng-repeat" => "customer in states['negotiation'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
@@ -54,8 +51,7 @@
                     show
                 .panel-body{:style => "display:none;"}
                   Panel content
-      .col-md-3
-        .well.drop-column
+        .col-md-3.equal-column.well
           %h2 Active
           #active-sort.ui-sortable.connectedSortable
             .customers_container{"ng-repeat" => "customer in states['active'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
@@ -67,6 +63,19 @@
                     show
                 .panel-body{:style => "display:none;"}
                   Panel content
+  .row.tab-bottom
+    .col-md-12
+      .col-md-3
+        .tab-background
+      .col-md-3
+        .tab-background
+      .col-md-3
+        .tab-background
+      .col-md-3
+        .tab-background
+  %br
+  %br
+
 
 
 

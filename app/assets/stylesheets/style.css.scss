@@ -31,6 +31,9 @@ nav {
   top:-20px;
   margin-bottom:0;
 }
+.navbar {
+  border-radius:0px;
+}
 
 .alert.alert-danger {
   position:relative;
@@ -170,16 +173,38 @@ nav {
 
 /********************************************************************/
 
+
 .sales-tracker-container{
   h2, h1{
     margin-top:4px;
     margin-bottom:20px;
   }
-  .drop-column{
-    min-height: 600px;
-    padding:8px;
-    background-color:#FFF;
+
+  .equal-columns-container {
+    overflow: hidden;
   }
+  .equal-column {
+    min-height: 600px;
+    padding: 12px;
+    border:solid 10px #2E3032;
+    border-radius:20px;
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+
+  }
+
+  .tab-bottom .col-md-3{
+    padding:0 10px;
+  }
+
+  .tab-background {
+    height:50px;
+    background:#F5F5F5;
+    padding-top:10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
   .connectedSortable{min-height:500px;}
   .panel{
     margin-bottom:4px;
