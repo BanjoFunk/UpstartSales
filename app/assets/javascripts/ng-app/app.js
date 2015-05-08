@@ -8,7 +8,8 @@ angular
     'abilityService',
     'alertService',
     'datatables',
-    'datatables.bootstrap'
+    'datatables.bootstrap',
+    'ngAnimate'
   ])
   .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider

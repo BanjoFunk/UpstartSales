@@ -1,19 +1,4 @@
-/*
- jQuery UI Sortable plugin wrapper
- @param [ui-sortable] {object} Options to pass to $.fn.sortable() merged onto ui.config
- */
 angular.module('UpstartSales.directives', [])
-  .directive('toggleContactForm', function() {
-    return {
-      restrict: 'C',
-      link: function(scope, element, attrs){
-        element.click(function(){
-          $('.new-contact-form').toggle("slide")
-          $('.button-transform').toggle("fade")
-        });
-      }
-    }
-  })
   .directive('customerFormToggle', function() {
     return {
       restrict: 'C',

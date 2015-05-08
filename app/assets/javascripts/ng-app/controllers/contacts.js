@@ -2,15 +2,22 @@ angular.module('UpstartSales')
   .controller('ContactsCtrl', ['$scope', '$location', 'Session', 'Ability', '$http', 'Alert', 'DTOptionsBuilder', 'DTColumnBuilder', 'DTInstances',
     function ($scope, $location, Session, Ability, $http, Alert, DTOptionsBuilder, DTColumnBuilder, DTInstances) {
 
-    var vm = this;
-    vm.dtOptions = DTOptionsBuilder
+    var self = this
+    $scope.newContactInfo = {}
+    self.showContactForm = false
+
+    self.toggleContactForm = function() {
+      self.showContactForm = !self.showContactForm
+    };
+
+    self.dtOptions = DTOptionsBuilder
       .fromSource('/api/customers/' + $scope.selectedCustomer.id + '/customer_contacts')
       .withBootstrap()
       .withDisplayLength(6)
       .withOption("bLengthChange", false)
-    vm.dtColumns = [
-      DTColumnBuilder.newColumn('first_name').withTitle('First name'),
-      DTColumnBuilder.newColumn('last_name').withTitle('Last name'),
+    self.dtColumns = [
+      DTColumnBuilder.newColumn('first_name').withTitle('first name'),
+      DTColumnBuilder.newColumn('last_name').withTitle('last name'),
       DTColumnBuilder.newColumn('position').withTitle('position'),
       DTColumnBuilder.newColumn('phone').withTitle('phone'),
       DTColumnBuilder.newColumn('email').withTitle('email')
@@ -18,12 +25,15 @@ angular.module('UpstartSales')
 
     $scope.$watch('details_category', function(newValue, oldValue) {
       if(newValue == "contacts"){
-        $scope.newContactInfo = {}
         DTInstances.getLast().then(function(dtInstance) {
           dtInstance.changeData('/api/customers/' + $scope.selectedCustomer.id + '/customer_contacts');
         });
       }
     });
+
+    $scope.clearContactForm = function() {
+      $scope.newContactInfo = {}
+    };
 
     $scope.newContact = function(contact) {
       $http.post('/api/customers/' + $scope.selectedCustomer.id + '/customer_contacts', {

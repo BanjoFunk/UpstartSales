@@ -1,6 +1,7 @@
 .contacts-container{"ng-controller" => "ContactsCtrl as control"}
 
-  .new-contact-form
+  %button.btn.btn-danger#contact-cancel.animated{'ng-show'=>"control.showContactForm", "contact-toggle"=>"control.toggleContactForm()"} cancel
+  #new-contact-form.animated{'ng-show'=>"control.showContactForm"}
     %h2.text-center create a new contact
     %form.form-horizontal{:novalidate => ""}
       .form-group
@@ -29,13 +30,12 @@
           %textarea#ncNotes.form-control{rows:"3", :placeholder => "Notes", "ng-model" => "newContactInfo.notes"}
       .form-group
         .col-xs-offset-3.col-xs-9
-          %button.btn.btn-primary.toggle-contact-form{:type => "submit", "ng-click" => "newContact(newContactInfo)"} Add
+          %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "newContact(newContactInfo)", "contact-toggle"=>"control.toggleContactForm()"} Add
 
   .existing-contacts
-    %button.btn.btn-primary.toggle-contact-form.button-transform add a contact
-    %button.btn.btn-danger.toggle-contact-form.button-transform{style: 'display:none;'} cancel
+    %button.btn.btn-primary.animated{'ng-show'=>"!control.showContactForm", "contact-toggle"=>"control.toggleContactForm()"} add a contact
 
-    #contact-table
+    #contact-table.animated{'ng-show'=>"!control.showContactForm"}
       %table.table.table-striped.table-bordered.table-condensed{:datatable => "", "dt-columns" => "control.dtColumns", "dt-options" => "control.dtOptions"}
 
 

@@ -17,6 +17,7 @@
 //= require angular-route
 //= require angular-strap
 //= require angular-resource
+//= require angular-animate
 //= require angular-rails-templates
 //= require datatables
 //= require angular-datatables
