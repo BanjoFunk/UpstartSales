@@ -15,11 +15,11 @@
   .row
     .col-md-12
       .text-center.equal-columns-container
-        .col-md-3.equal-column.well
+        .col-xs-3.equal-column.well
           %h2 Idea
           #idea-sort.ui-sortable.connectedSortable
             .customers_container{"ng-repeat" => "customer in states['idea'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
-              .panel.panel-info.text-left
+              .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
                     {{customer.name}}
@@ -27,11 +27,11 @@
                     show
                 .panel-body{:style => "display:none;"}
                   Panel content
-        .col-md-3.equal-column.well
+        .col-xs-3.equal-column.well
           %h2 Contact
           #contacted-sort.ui-sortable.connectedSortable
             .customers_container{"ng-repeat" => "customer in states['contacted'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
-              .panel.panel-info.text-left
+              .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
                     {{customer.name}}
@@ -39,11 +39,11 @@
                     show
                 .panel-body{:style => "display:none;"}
                   Panel content
-        .col-md-3.equal-column.well
+        .col-xs-3.equal-column.well
           %h2 Negotiation
           #negotiation-sort.ui-sortable.connectedSortable
             .customers_container{"ng-repeat" => "customer in states['negotiation'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
-              .panel.panel-info.text-left
+              .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
                     {{customer.name}}
@@ -51,11 +51,11 @@
                     show
                 .panel-body{:style => "display:none;"}
                   Panel content
-        .col-md-3.equal-column.well
+        .col-xs-3.equal-column.well
           %h2 Active
           #active-sort.ui-sortable.connectedSortable
             .customers_container{"ng-repeat" => "customer in states['active'] | orderBy:sort_position", "id"=>"{{customer.id}}"}
-              .panel.panel-info.text-left
+              .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
                     {{customer.name}}
@@ -80,15 +80,13 @@
 
 
   %modal{:title=>'test', :visible=>"$parent.showModal"}
-    .modal-header.text-center
+    .modal-header
       %button.close{"aria-hidden"=>"true", "data-dismiss"=>"modal", :type=>"button", 'ng-click'=>'hideModal()'} ×
       %h2.modal-title
         {{selectedCustomer.name}}
     .modal-body
 
       %ul.nav.nav-tabs
-        %li{:role=>"customer_details", 'ng-click'=>'detailsNav("overview")', 'ng-class'=>'{active: details_category=="overview"}'}
-          %a{:href=>"#"} Overview
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("contacts")', 'ng-class'=>'{active: details_category=="contacts"}'}
           %a{:href=>"#"} Contacts
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("locations")', 'ng-class'=>'{active: details_category=="locations"}'}
@@ -99,8 +97,6 @@
           %a{:href=>"#"} Comments
 
 
-      .customer-details{'ng-show'=>'details_category == "overview"'}
-        #overview{'ng-include'=>"'sales/_overview.html'"}
       .customer-details{'ng-show'=>'details_category == "contacts"'}
         #contacts{'ng-include'=>"'sales/_contacts.html'"}
       .customer-details{'ng-show'=>'details_category == "locations"'}

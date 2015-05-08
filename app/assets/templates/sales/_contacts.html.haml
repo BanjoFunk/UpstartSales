@@ -1,32 +1,41 @@
-.contacts-container{"ng-controller" => "ContactsCtrl"}
-  %ul
-    %div{'ng-repeat'=>'contact in selectedCustomer.contacts'}
-      %span first name: {{contact.first_name}}
-      %br
-      %span last name: {{contact.last_name}}
-      %br
-      %span email: {{contact.email}}
-      %br
-      %span phone: {{contact.phone}}
-      %br
-      %span position: {{contact.position}}
-      %hr
-  %br
-  %form.simple-form{:novalidate => ""}
-    %br
-    First Name:
-    %input{"ng-model" => "newContactInfo.first_name", :type => "text"}
-    %br
-    Last Name:
-    %input{"ng-model" => "newContactInfo.last_name", :type => "text"}
-    %br
-    E-mail:
-    %input{"ng-model" => "newContactInfo.email", :type => "email"}
-    %br
-    Phone:
-    %input{"ng-model" => "newContactInfo.phone", :type => "text"}
-    %br
-    Position:
-    %input{"ng-model" => "newContactInfo.position", :type => "text"}
-    %br
-    %input{"ng-click" => "newContact(newContactInfo)", :type => "submit", :value => "Save"}
+.contacts-container{"ng-controller" => "ContactsCtrl as control"}
+
+  .new-contact-form
+    %h2.text-center create a new contact
+    %form.form-horizontal{:novalidate => ""}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncFirstName"} First Name
+        .col-xs-9
+          %input#ncFirstName.form-control{:placeholder => "First Name", :type => "text", "ng-model" => "newContactInfo.first_name"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncLastName"} Last Name
+        .col-xs-9
+          %input#ncLastName.form-control{:placeholder => "Last Name", :type => "text", "ng-model" => "newContactInfo.last_name"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncEmail"} Email
+        .col-xs-9
+          %input#ncEmail.form-control{:placeholder => "Email", :type => "email", "ng-model" => "newContactInfo.email"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncPhone"} Phone
+        .col-xs-9
+          %input#ncPhone.form-control{:placeholder => "Phone", :type => "tel", "ng-model" => "newContactInfo.phone"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncPosition"} Position
+        .col-xs-9
+          %input#ncPosition.form-control{:placeholder => "Position", :type => "text", "ng-model" => "newContactInfo.position"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncNotes"} Notes
+        .col-xs-9
+          %textarea#ncNotes.form-control{rows:"3", :placeholder => "Notes", "ng-model" => "newContactInfo.notes"}
+      .form-group
+        .col-xs-offset-3.col-xs-9
+          %button.btn.btn-primary.toggle-contact-form{:type => "submit", "ng-click" => "newContact(newContactInfo)"} Add
+
+  .existing-contacts
+    %button.btn.btn-primary.toggle-contact-form.button-transform add a contact
+    %button.btn.btn-danger.toggle-contact-form.button-transform{style: 'display:none;'} cancel
+
+    #contact-table
+      %table.table.table-striped.table-bordered.table-condensed{:datatable => "", "dt-columns" => "control.dtColumns", "dt-options" => "control.dtOptions"}
+
+

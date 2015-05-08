@@ -1,11 +1,14 @@
 angular
   .module('UpstartSales', [
     'ngRoute',
+    'ngResource',
     'templates',
     'UpstartSales.directives',
     'sessionService',
     'abilityService',
-    'alertService'
+    'alertService',
+    'datatables',
+    'datatables.bootstrap'
   ])
   .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider

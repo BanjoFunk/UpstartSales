@@ -18,6 +18,9 @@
 //= require angular-strap
 //= require angular-resource
 //= require angular-rails-templates
+//= require datatables
+//= require angular-datatables
+//= require angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js
 //= require_tree ../templates
 //= require_tree ./jquery-ui-1.11.2.custom
 //= require_tree ./ng-app/services

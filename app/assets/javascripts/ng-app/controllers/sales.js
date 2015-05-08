@@ -1,7 +1,7 @@
 angular.module('UpstartSales')
   .controller('SalesCtrl', ['$scope', '$http', 'Ability', 'Alert', '$timeout', function ($scope, $http, Ability, Alert, $timeout) {
     $scope.errors = [];
-    $scope.selectedCustomer = "";
+    $scope.selectedCustomer = {id: 1, contacts: []};
 
     $http.get('/api/customers')
       .success(function(data, status, headers, config) {
@@ -39,10 +39,11 @@ angular.module('UpstartSales')
     $scope.showModal = false;
     $scope.toggleModal = function(customer){
       $scope.selectedCustomer = customer
-      $scope.details_category = "overview";
+      $scope.details_category = "contacts";
       $scope.showModal = !$scope.showModal;
     };
     $scope.hideModal = function() {
+      $scope.details_category = "";
       $scope.showModal = false;
     }
 

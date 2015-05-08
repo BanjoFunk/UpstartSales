@@ -14,16 +14,7 @@ body {
   min-height:500px;
 }
 .modal-dialog{
-  width:700px;
-}
-
-td, th{
-  height:51px;
-  text-align:center;
-}
-
-td button {
-  width:90px;
+  width:950px;
 }
 
 nav {
@@ -174,6 +165,15 @@ nav {
 /********************************************************************/
 
 
+.panel-customer > .panel-heading {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.panel-customer {
+  border-color: #2E3032;
+}
+
 .sales-tracker-container{
   h2, h1{
     margin-top:4px;
@@ -205,9 +205,42 @@ nav {
     border-bottom-right-radius: 10px;
   }
 
-  .connectedSortable{min-height:500px;}
+  .connectedSortable{
+    min-height:500px;
+  }
   .panel{
     margin-bottom:4px;
+  }
+  .existing-contacts{
+    padding:25px 50px;
+    button.toggle-contact-form {
+      position:absolute;
+      top:96px;
+      left:65px;
+    }
+    #contact-table {
+      thead tr {
+        background-color:#D9EDF7;
+      }
+      tbody tr.even {
+        background-color: #D9EDF7;
+      }
+      tbody tr.odd {
+        background-color: #FFF;
+      }
+    }
+  }
+  .new-contact-form {
+    display:none;
+    width:500px;
+    margin: 0 auto;
+    margin-top:40px;
+    .form-group {
+      margin-bottom:8px;
+    }
+    h2 {
+      margin-bottom:25px;
+    }
   }
 }
 
