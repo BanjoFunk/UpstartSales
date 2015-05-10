@@ -16,7 +16,6 @@ angular.module('UpstartSales')
       scope: true,
       link: function(scope, element, attrs){
         element.keydown(function (e) {
-
           if (e.keyCode == 37) {  //left
             e.preventDefault();
             var idx = $.inArray(element[0], $('.navbar-tab-stop'))

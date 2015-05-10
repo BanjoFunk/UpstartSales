@@ -60,7 +60,12 @@ angular.module('UpstartSales')
               var index = $.inArray(element[0], element.parent().children('.customer-navigation-stop'))
               var nextColumn = element.closest('.equal-column').next().find('.customer-navigation-stop')
               var newIdx = nextColumn.length > index ? index : nextColumn.length - 1
-              element.insertBefore(nextColumn[newIdx]);
+
+              if(nextColumn.length <= index){
+                element.insertAfter(nextColumn[newIdx]);
+              } else {
+                element.insertBefore(nextColumn[newIdx]);
+              }
               element.focus();
               updateSort()
             }
@@ -131,43 +136,19 @@ angular.module('UpstartSales')
       }
     }
   })
-
-
-
-
   .directive('customerTabsContainer', function() {
     return {
       restrict: 'C',
       scope: true,
       link: function(scope, element, attrs){
-        element.focus(function() {
-          // $(".customer-tab-stop").first().focus();
-
-
-        });
-
         element.keydown(function (e) {
-
           if (e.keyCode == 37) {  //left
             $('li.active').prev().click();
-          }
-          if (e.keyCode == 38) {  //up
           }
           if (e.keyCode == 39) {  //right
             $('li.active').next().click();
           }
-          if (e.keyCode == 40) {  //down
-          }
         });
-
-        // element.keydown(function (e) {
-        //   if ((e.keyCode == 37) || (e.keyCode == 38) || (e.keyCode == 39) || (e.keyCode == 40)) {
-        //     if($('.customer-tab-stop:focus').length == 0){
-        //       $(".customer-tab-stop").first().focus();
-        //     }
-        //   }
-        //  });
-
       }
     }
   })
@@ -177,18 +158,12 @@ angular.module('UpstartSales')
       scope: true,
       link: function(scope, element, attrs){
         element.keydown(function (e) {
-
           if (e.keyCode == 37) {  //left
             element.closest('li').prev().find('.customer-tab-stop').focus().click();
-          }
-          if (e.keyCode == 38) {  //up
           }
           if (e.keyCode == 39) {  //right
             element.closest('li').next().find('.customer-tab-stop').focus().click();
           }
-          if (e.keyCode == 40) {  //down
-          }
-
          });
       }
     }
