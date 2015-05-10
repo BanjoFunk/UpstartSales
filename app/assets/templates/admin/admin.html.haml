@@ -45,11 +45,11 @@
             #addUserForm.form_container{'ng-controller'=>'AdminCtrl'}
               %form{:name => "addUserForm", :method => 'post'}
                 .col-md-3.text-left
-                  %input.input-block-level.form-control.new_user{:autofocus => "", "ng-model" => "user.first_name", :name=>'first_name', :placeholder => "first name", :required => "required", :type => "text", :style => 'text-align:left;'}
+                  %input.input-block-level.form-control.new_user{ "ng-model" => "user.first_name", :name=>'first_name', :placeholder => "first name", :required => "required", :type => "text", :style => 'text-align:left;'}
                 .col-md-3.text-left
-                  %input.input-block-level.form-control.new_user{:autofocus => "", "ng-model" => "user.last_name", :name=>'last_name', :placeholder => "last name", :required => "required", :type => "text", :style => 'text-align:left;'}
+                  %input.input-block-level.form-control.new_user{ "ng-model" => "user.last_name", :name=>'last_name', :placeholder => "last name", :required => "required", :type => "text", :style => 'text-align:left;'}
                 .col-md-4.text-left
-                  %input.input-block-level.form-control.new_user{:autofocus => "", "ng-model" => "user.email", :name=>'email', :placeholder => "email", :required => "required", :type => "text", :style => 'text-align:left;'}
+                  %input.input-block-level.form-control.new_user{ "ng-model" => "user.email", :name=>'email', :placeholder => "email", :required => "required", :type => "text", :style => 'text-align:left;'}
                 .col-md-1.text-left
                   %button.pull-left.btn.btn-large.btn-primary{"ng-click" => "addUser(user)", "ng-disabled" => "registrationForm.$invalid"}
                     %span submit
