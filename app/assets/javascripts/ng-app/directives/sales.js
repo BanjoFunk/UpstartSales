@@ -46,55 +46,85 @@ angular.module('UpstartSales')
           var sort = {"idea":idea, "contacted":contacted, "negotiation":negotiation, "active":active}
           scope.postSort(sort)
         }
+        var shouldPostSort = false
 
+        var ctrlKeyFired = false
         element.on('click', function(e){
           element.focus();
         })
         element.keydown(function (e) {
+          if (e.ctrlKey){
+            element.addClass('active-customer-nav')
+            ctrlKeyFired = true
+          }
+        })
+        element.keyup(function (e) {
+          if ((ctrlKeyFired == true) && (e.ctrlKey == false)){
+            ctrlKeyFired = false
+            element.removeClass('active-customer-nav')
+            if(shouldPostSort == true){
+              updateSort()
+              shouldPostSort = false
+            }
+          }
+        })
+        element.keydown(function (e) {
 
-          if (e.ctrlKey) {
+          if (e.ctrlKey) { // WITH THE CONTROL KEY HELD
             if (e.keyCode == 39) {  //right
               e.preventDefault();
               e.stopPropagation();
 
               var index = $.inArray(element[0], element.parent().children('.customer-navigation-stop'))
-              var nextColumn = element.closest('.equal-column').next().find('.customer-navigation-stop')
-              var newIdx = nextColumn.length > index ? index : nextColumn.length - 1
+              var nextColumn = element.closest('.equal-column').next()
+              var nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+              var newIdx = nextColumnCustomers.length > index ? index : nextColumnCustomers.length - 1
 
-              if(nextColumn.length <= index){
-                element.insertAfter(nextColumn[newIdx]);
+              if (nextColumnCustomers.length == 0) {
+                nextColumn.children('.connected-sortable').append(element)
+              } else if(nextColumnCustomers.length <= index){
+                element.insertAfter(nextColumnCustomers[newIdx]);
               } else {
-                element.insertBefore(nextColumn[newIdx]);
+                element.insertBefore(nextColumnCustomers[newIdx]);
               }
               element.focus();
-              updateSort()
+              shouldPostSort = true
             }
             if (e.keyCode == 37) {  //left
               e.preventDefault();
               e.stopPropagation();
 
               var index = $.inArray(element[0], element.parent().children('.customer-navigation-stop'))
-              var nextColumn = element.closest('.equal-column').prev().find('.customer-navigation-stop')
-              var newIdx = nextColumn.length > index ? index : nextColumn.length - 1
-              element.insertBefore(nextColumn[newIdx]);
+              var nextColumn = element.closest('.equal-column').prev()
+              var nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+              var newIdx = nextColumnCustomers.length > index ? index : nextColumnCustomers.length - 1
+
+
+              if (nextColumnCustomers.length == 0) {
+                nextColumn.children('.connected-sortable').append(element)
+              } else if(nextColumnCustomers.length <= index){
+                element.insertAfter(nextColumnCustomers[newIdx]);
+              } else {
+                element.insertBefore(nextColumnCustomers[newIdx]);
+              }
               element.focus();
-              updateSort()
+              shouldPostSort = true
             }
 
             if (e.keyCode == 38) {  //up
               e.preventDefault();
               element.insertBefore(element.prev());
               element.focus()
-              updateSort()
+              shouldPostSort = true
             }
             if (e.keyCode == 40) {  //down
               e.preventDefault();
               element.insertAfter(element.next());
               element.focus()
-              updateSort()
+              shouldPostSort = true
             }
 
-          } else {
+          } else {  // WITHOUT A MODIFIER KEY
 
             if (e.keyCode == 38) {  //up
               e.preventDefault();
@@ -107,16 +137,26 @@ angular.module('UpstartSales')
             if (e.keyCode == 37) {  //left
               e.preventDefault();
               var index = $.inArray(element[0], element.parent().children('.customer-navigation-stop'))
-              var nextColumn = element.closest('.equal-column').prev().find('.customer-navigation-stop')
-              var newIdx = nextColumn.length > index ? index : nextColumn.length - 1
-              $(nextColumn[newIdx]).focus()
+              var nextColumn = element.closest('.equal-column').prev()
+              var nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+              while(nextColumnCustomers.length == 0) {
+                nextColumn = nextColumn.prev()
+                nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+              }
+              var newIdx = nextColumnCustomers.length > index ? index : nextColumnCustomers.length - 1
+              $(nextColumnCustomers[newIdx]).focus()
             }
             if (e.keyCode == 39) {  //right
               e.preventDefault();
               var index = $.inArray(element[0], element.parent().children('.customer-navigation-stop'))
-              var nextColumn = element.closest('.equal-column').next().find('.customer-navigation-stop')
-              var newIdx = nextColumn.length > index ? index : nextColumn.length - 1
-              $(nextColumn[newIdx]).focus()
+              var nextColumn = element.closest('.equal-column').next()
+              var nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+              while(nextColumnCustomers.length == 0) {
+                nextColumn = nextColumn.next()
+                nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+              }
+              var newIdx = nextColumnCustomers.length > index ? index : nextColumnCustomers.length - 1
+              $(nextColumnCustomers[newIdx]).focus()
             }
 
             if (e.keyCode == 32) {  //space
