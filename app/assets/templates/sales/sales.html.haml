@@ -12,14 +12,14 @@
             &nbsp;Submit&nbsp;
           %button#cancel-customer-name.btn.btn-danger.customer-form-toggle{"aria-label" => 'cancel'}
             %span.glyphicon.glyphicon-remove
-      %input.form-control{:placeholder => "Search", :type => "text", "ng-model" => "searchText", style: "position:absolute; top:0; right:30px; width:200px;", :tabindex=>2}
+      %input.form-control#searchSales{:placeholder => "Search", :type => "text", "ng-model" => "searchText", style: "position:absolute; top:0; right:30px; width:200px;", :tabindex=>2}
   .row
     .col-md-12
-      .text-center.equal-columns-container
+      .text-center.equal-columns-container.customer-navigation{:tabindex=>3}
         .col-xs-3.equal-column.well
           %h2 Idea
-          #idea-sort.ui-sortable.connectedSortable
-            .customers_container{"ng-repeat" => "customer in states['idea'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}"}
+          #idea-sort.ui-sortable.connected-sortable
+            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['idea'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1"}
               .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
@@ -30,8 +30,8 @@
                   Panel content
         .col-xs-3.equal-column.well
           %h2 Contact
-          #contacted-sort.ui-sortable.connectedSortable
-            .customers_container{"ng-repeat" => "customer in states['contacted'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}"}
+          #contacted-sort.ui-sortable.connected-sortable
+            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['contacted'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1"}
               .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
@@ -42,8 +42,8 @@
                   Panel content
         .col-xs-3.equal-column.well
           %h2 Negotiation
-          #negotiation-sort.ui-sortable.connectedSortable
-            .customers_container{"ng-repeat" => "customer in states['negotiation'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}"}
+          #negotiation-sort.ui-sortable.connected-sortable
+            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['negotiation'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1"}
               .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
@@ -54,8 +54,8 @@
                   Panel content
         .col-xs-3.equal-column.well
           %h2 Active
-          #active-sort.ui-sortable.connectedSortable
-            .customers_container{"ng-repeat" => "customer in states['active'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}"}
+          #active-sort.ui-sortable.connected-sortable
+            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['active'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1"}
               .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
@@ -80,22 +80,22 @@
 
 
 
-  %modal{:title=>'test', :visible=>"$parent.showModal"}
+  %modal{:title=>'test', :visible=>"$parent.showModal", :tabindex=>"-1"}
     .modal-header
-      %button.close{"aria-hidden"=>"true", "data-dismiss"=>"modal", :type=>"button", 'ng-click'=>'hideModal()'} ×
+      %button.close{"aria-hidden"=>"true", "data-dismiss"=>"modal", :type=>"button", 'ng-click'=>'hideModal()', :tabindex=>"-1"} ×
       %h2.modal-title
         {{selectedCustomer.name}}
     .modal-body
 
-      %ul.nav.nav-tabs
+      %ul.nav.nav-tabs.customer-tabs-container{:tabindex=>"0"}
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("contacts")', 'ng-class'=>'{active: details_category=="contacts"}'}
-          %a{:href=>"#"} Contacts
+          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"} Contacts
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("locations")', 'ng-class'=>'{active: details_category=="locations"}'}
-          %a{:href=>"#"} Locations
+          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"} Locations
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("communications")', 'ng-class'=>'{active: details_category=="communications"}'}
-          %a{:href=>"#"} Communications Log
+          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"} Communications Log
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("comments")', 'ng-class'=>'{active: details_category=="comments"}'}
-          %a{:href=>"#"} Comments
+          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"} Comments
 
 
       .customer-details{'ng-show'=>'details_category == "contacts"'}

@@ -8,6 +8,11 @@ angular.module('UpstartSales')
 
     self.toggleContactForm = function() {
       self.showContactForm = !self.showContactForm
+      if(self.showContactForm == true){
+        setTimeout(function(){ $("#ncFirstName").focus() }, 200);
+      } else {
+        setTimeout(function(){ $("#contact-add").focus() }, 200);
+      }
     };
 
     self.dtOptions = DTOptionsBuilder

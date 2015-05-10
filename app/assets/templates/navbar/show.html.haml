@@ -1,4 +1,5 @@
 .navbar-containter{'ng-controller' => "navCtrl"}
+  %shortcut
   %nav.navbar.navbar-default
     .container-fluid
       .navbar-header
@@ -6,7 +7,9 @@
       .collapse.navbar-collapse
         %ul.nav.navbar-nav
           %li
-            %a{:href => "/batches"} Batches
+            %a{:href => "/"} Sales
+          %li
+            %a{:href => "/"} Customers
         %ul.nav.navbar-nav.navbar-right
           %li{'ng-if' => "hasRole('admin')"}
             %a{:href => "/admin"} Admin

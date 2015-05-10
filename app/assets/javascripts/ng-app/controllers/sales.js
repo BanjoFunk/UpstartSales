@@ -45,6 +45,7 @@ angular.module('UpstartSales')
     $scope.hideModal = function() {
       $scope.details_category = "";
       $scope.showModal = false;
+      $('#' + $scope.selectedCustomer.id).focus()
     }
 
     $scope.detailsNav = function(category) {

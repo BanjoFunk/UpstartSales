@@ -1,33 +1,10 @@
 angular.module('UpstartSales.directives', [])
-  .directive('customerFormToggle', function() {
-    return {
-      restrict: 'C',
-      link: function(scope, element, attrs){
-        element.click(function(){
-          scope.newCustomerName = ""
-          scope.diguest
-          $('.hidden-cust-form').toggle("slide");
-          $('#new-customer-name').focus();
-        });
-      }
-    }
-  })
-  .directive('toggleAccordion', function() {
-    return {
-      restrict: 'C',
-      link: function(scope, element, attrs){
-        element.click(function(){
-          $(element).parents('.panel-heading').siblings('.panel-body').slideToggle(300);
-        });
-      }
-    }
-  })
   .directive('uiSortable', function() {
     return {
       restrict: 'C',
       link: function(scope, element, attrs){
         element.sortable({
-          connectWith: ".connectedSortable",
+          connectWith: ".connected-sortable",
           grid: [ 3, 3 ],
           update: function(event, ui){
             var idea = $('#idea-sort').sortable('toArray');
@@ -145,5 +122,24 @@ angular.module('UpstartSales.directives', [])
         }
       });
     };
-});
+})
+.directive('shortcut', function() {
+  return {
+    restrict: 'E',
+    scope: true,
+    link: function(scope, element, attrs){
+
+      jQuery(document).on('keydown', function(e){
+
+        if (e.keyCode == 83) {
+          if (e.ctrlKey) {
+            $('#searchSales').focus()
+          }
+        }
+
+       });
+
+    }
+  }
+})
 

@@ -213,7 +213,23 @@ nav {
     border-bottom-right-radius: 10px;
   }
 
-  .connectedSortable{
+  .customer-tabs-container{
+    li a:hover{
+      background-color:transparent;
+    }
+    &:focus{
+      padding:4px;
+      li.active {
+        a {
+          border-width:2px;
+          border-color: rgba(82,168,236,.8);
+          border-radius:5px;
+        }
+      }
+    }
+  }
+
+  .connected-sortable{
     min-height:500px;
   }
   .panel{
@@ -232,30 +248,31 @@ nav {
         top:96px;
         left:65px;
       }
-      #contact-table {
-        thead tr {
+    }
 
-          background-color:#ACD2E3;
-          color: #000
-        }
-        tbody tr.even {
-          background-color: #D9EDF7;
-        }
-        tbody tr.odd {
-          background-color: #FFF;
-        }
-        &.animated.ng-hide-remove {
-          -webkit-animation-delay: 300ms;
-          animation-delay: 300ms;
-          -webkit-animation-duration: 500ms;
-          animation-duration: 500ms;
-          -webkit-animation-name: slideInUp;
-          animation-name: slideInUp;
-        }
-        &.animated.ng-hide-add {
-          -webkit-animation-name: slideOutDown;
-          animation-name: slideOutDown;
-        }
+    #contact-table {
+      thead tr {
+
+        background-color:#ACD2E3;
+        color: #000
+      }
+      tbody tr.even {
+        background-color: #D9EDF7;
+      }
+      tbody tr.odd {
+        background-color: #FFF;
+      }
+      &.animated.ng-hide-remove {
+        -webkit-animation-delay: 300ms;
+        animation-delay: 300ms;
+        -webkit-animation-duration: 500ms;
+        animation-duration: 500ms;
+        -webkit-animation-name: slideInUp;
+        animation-name: slideInUp;
+      }
+      &.animated.ng-hide-add {
+        -webkit-animation-name: slideOutDown;
+        animation-name: slideOutDown;
       }
     }
 
@@ -276,19 +293,27 @@ nav {
         animation-name: fadeOut;
       }
       &.animated.ng-hide-remove {
-        -webkit-animation-name: flipInX;
-        animation-name: flipInX;
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
       }
     }
 
     button.animated.ng-hide-add{
+      -webkit-animation-delay: 0ms;
+      animation-delay: 0ms;
       -webkit-animation-name: fadeOut;
       animation-name: fadeOut;
+      -webkit-animation-duration: 0ms;
+      animation-duration: 0ms;
     }
 
     button.animated.ng-hide-remove{
+      -webkit-animation-delay: 100ms;
+      animation-delay: 100ms;
       -webkit-animation-name: fadeIn;
       animation-name: fadeIn;
+      -webkit-animation-duration: 500ms;
+      animation-duration: 500ms;
     }
 
 

@@ -7,33 +7,33 @@
       .form-group
         %label.control-label.col-xs-3{:for => "ncFirstName"} First Name
         .col-xs-9
-          %input#ncFirstName.form-control{:placeholder => "First Name", :type => "text", "ng-model" => "newContactInfo.first_name"}
+          %input#ncFirstName.form-control.form-escape{:placeholder => "First Name", :type => "text", "ng-model" => "newContactInfo.first_name"}
       .form-group
         %label.control-label.col-xs-3{:for => "ncLastName"} Last Name
         .col-xs-9
-          %input#ncLastName.form-control{:placeholder => "Last Name", :type => "text", "ng-model" => "newContactInfo.last_name"}
+          %input#ncLastName.form-control.form-escape{:placeholder => "Last Name", :type => "text", "ng-model" => "newContactInfo.last_name"}
       .form-group
         %label.control-label.col-xs-3{:for => "ncEmail"} Email
         .col-xs-9
-          %input#ncEmail.form-control{:placeholder => "Email", :type => "email", "ng-model" => "newContactInfo.email"}
+          %input#ncEmail.form-control.form-escape{:placeholder => "Email", :type => "email", "ng-model" => "newContactInfo.email"}
       .form-group
         %label.control-label.col-xs-3{:for => "ncPhone"} Phone
         .col-xs-9
-          %input#ncPhone.form-control{:placeholder => "Phone", :type => "tel", "ng-model" => "newContactInfo.phone"}
+          %input#ncPhone.form-control.form-escape{:placeholder => "Phone", :type => "tel", "ng-model" => "newContactInfo.phone"}
       .form-group
         %label.control-label.col-xs-3{:for => "ncPosition"} Position
         .col-xs-9
-          %input#ncPosition.form-control{:placeholder => "Position", :type => "text", "ng-model" => "newContactInfo.position"}
+          %input#ncPosition.form-control.form-escape{:placeholder => "Position", :type => "text", "ng-model" => "newContactInfo.position"}
       .form-group
         %label.control-label.col-xs-3{:for => "ncNotes"} Notes
         .col-xs-9
-          %textarea#ncNotes.form-control{rows:"3", :placeholder => "Notes", "ng-model" => "newContactInfo.notes"}
+          %textarea#ncNotes.form-control.form-escape{rows:"3", :placeholder => "Notes", "ng-model" => "newContactInfo.notes"}
       .form-group
         .col-xs-offset-3.col-xs-9
           %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "newContact(newContactInfo)", "contact-toggle"=>"control.toggleContactForm()"} Add
 
   .existing-contacts
-    %button.btn.btn-primary.animated{'ng-show'=>"!control.showContactForm", "contact-toggle"=>"control.toggleContactForm()"} add a contact
+    %button.btn.btn-primary.animated#contact-add{'ng-show'=>"!control.showContactForm", "contact-toggle"=>"control.toggleContactForm()"} add a contact
 
     #contact-table.animated{'ng-show'=>"!control.showContactForm"}
       %table.table.table-striped.table-bordered.table-condensed{:datatable => "", "dt-columns" => "control.dtColumns", "dt-options" => "control.dtOptions"}

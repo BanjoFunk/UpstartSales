@@ -10,4 +10,18 @@ angular.module('UpstartSales')
       }
     }
   })
+  .directive('formEscape', function() {
+    return {
+      restrict: 'C',
+      scope: true,
+      link: function(scope, element, attrs){
+        element.keydown(function (e) {
+          if (e.keyCode == 27) {  //escape
+            e.stopPropagation();
+            $("#contact-cancel").click()
+          }
+        });
+      }
+    }
+  })
 
