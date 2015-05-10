@@ -12,6 +12,23 @@ angular.module('UpstartSales')
       }
     }
   })
+  .directive('customerNameEscape', function() {
+    return {
+      restrict: 'A',
+      scope: false,
+      link: function(scope, element, attrs){
+        element.keydown(function (e) {
+          if (e.keyCode == 27) {  //escape
+            $("#cancel-customer-name").click()
+            $("#show-customer-form").focus()
+          }
+          if (e.keyCode == 13) {  //enter
+            $("#new-customer-submit").click()
+          }
+        });
+      }
+    }
+  })
   .directive('toggleAccordion', function() {
     return {
       restrict: 'C',
@@ -47,8 +64,8 @@ angular.module('UpstartSales')
           scope.postSort(sort)
         }
         var shouldPostSort = false
-
         var ctrlKeyFired = false
+
         element.on('click', function(e){
           element.focus();
         })
@@ -138,25 +155,29 @@ angular.module('UpstartSales')
               e.preventDefault();
               var index = $.inArray(element[0], element.parent().children('.customer-navigation-stop'))
               var nextColumn = element.closest('.equal-column').prev()
-              var nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
-              while(nextColumnCustomers.length == 0) {
-                nextColumn = nextColumn.prev()
-                nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+              if(nextColumn.length){
+                var nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+                while(nextColumnCustomers.length == 0) {
+                  nextColumn = nextColumn.prev()
+                  nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+                }
+                var newIdx = nextColumnCustomers.length > index ? index : nextColumnCustomers.length - 1
+                $(nextColumnCustomers[newIdx]).focus()
               }
-              var newIdx = nextColumnCustomers.length > index ? index : nextColumnCustomers.length - 1
-              $(nextColumnCustomers[newIdx]).focus()
             }
             if (e.keyCode == 39) {  //right
               e.preventDefault();
               var index = $.inArray(element[0], element.parent().children('.customer-navigation-stop'))
               var nextColumn = element.closest('.equal-column').next()
-              var nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
-              while(nextColumnCustomers.length == 0) {
-                nextColumn = nextColumn.next()
-                nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+              if(nextColumn.length){
+                var nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+                while(nextColumnCustomers.length == 0) {
+                  nextColumn = nextColumn.next()
+                  nextColumnCustomers = nextColumn.find('.customer-navigation-stop')
+                }
+                var newIdx = nextColumnCustomers.length > index ? index : nextColumnCustomers.length - 1
+                $(nextColumnCustomers[newIdx]).focus()
               }
-              var newIdx = nextColumnCustomers.length > index ? index : nextColumnCustomers.length - 1
-              $(nextColumnCustomers[newIdx]).focus()
             }
 
             if (e.keyCode == 32) {  //space

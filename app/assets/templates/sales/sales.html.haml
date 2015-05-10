@@ -4,11 +4,11 @@
   .row
     .col-md-12.text-center
       %h1{style: 'color:white; font-size:30px;'} Upstart Sales Tracker
-      %button.btn.btn-primary.customer-form-toggle.hidden-cust-form{style: "position:absolute; top:0; left:30px;", :tabindex=>1} New Customer
+      %button.btn.btn-primary.customer-form-toggle.hidden-cust-form#show-customer-form{style: "position:absolute; top:0; left:30px;", :tabindex=>1} New Customer
       .hidden-cust-form.input-group{style:'width:400px;position:absolute; top:0px; left:30px; display:none;'}
-        %input.form-control#new-customer-name{"aria-describedby"=>"new-customer-name", :placeholder=>"Customer Name", :type => "text", :name => "newCustomerName", "ng-model"=>"newCustomerName"}
+        %input.form-control#new-customer-name{"aria-describedby"=>"new-customer-name", :placeholder=>"Customer Name", :type => "text", :name => "newCustomerName", "ng-model"=>"newCustomerName", "customer-name-escape"=>true}
         %div.input-group-btn
-          %button.btn.btn-primary{"ng-click"=>"addCustomer()", :type=>"submit"}
+          %button#new-customer-submit.btn.btn-primary{"ng-click"=>"addCustomer()", :type=>"submit"}
             &nbsp;Submit&nbsp;
           %button#cancel-customer-name.btn.btn-danger.customer-form-toggle{"aria-label" => 'cancel'}
             %span.glyphicon.glyphicon-remove
@@ -19,7 +19,7 @@
         .col-xs-3.equal-column.well
           %h2 Idea
           #idea-sort.ui-sortable.connected-sortable
-            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['idea'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1"}
+            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['idea'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
               .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
@@ -31,7 +31,7 @@
         .col-xs-3.equal-column.well
           %h2 Contact
           #contacted-sort.ui-sortable.connected-sortable
-            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['contacted'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1"}
+            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['contacted'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
               .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
@@ -43,7 +43,7 @@
         .col-xs-3.equal-column.well
           %h2 Negotiation
           #negotiation-sort.ui-sortable.connected-sortable
-            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['negotiation'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1"}
+            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['negotiation'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
               .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
@@ -55,7 +55,7 @@
         .col-xs-3.equal-column.well
           %h2 Active
           #active-sort.ui-sortable.connected-sortable
-            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['active'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1"}
+            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['active'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
               .panel.panel-customer.text-left
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}

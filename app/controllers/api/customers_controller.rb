@@ -4,7 +4,7 @@ class Api::CustomersController < ApplicationController
 
   def index
     @customers = Customer.all
-    @states = Customer.order('sort_position ASC').all.group_by(&:state)
+    @states = Customer.order('sort_position ASC').all.group_by(&:state_name)
   end
 
   def show
@@ -19,8 +19,9 @@ class Api::CustomersController < ApplicationController
 
   def create
     if params[:customer][:name] != ""
-      @customer = Customer.create(params[:customer])
-      @customer.states.create(:state_id => 0)
+      @customer = Customer.new(params[:customer])
+      @customer.state = 0
+      @customer.save
       render :partial => "api/customers/customer.json", :locals => { :customer => @customer }
     end
   end
@@ -44,18 +45,20 @@ class Api::CustomersController < ApplicationController
   def sort
     params.permit!
     sort = params['sort']
+    idx = 0
     sort.each do |state ,customers|
       state_id = Customer::STATES.index(state)
       if customers
-        customers.each_with_index do |customer_id, idx|
+        customers.each do |customer_id|
           c = Customer.find(customer_id.to_i)
-          c.states.create(:state_id => state_id) if c.state_id != state_id
+          c.state = state_id
           c.sort_position = idx
+          idx += 1
           c.save
         end
       end
     end
-    @states = Customer.all.group_by(&:state)
+    @states = Customer.order('sort_position ASC').all.group_by(&:state_name)
   end
 
   private

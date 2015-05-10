@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150505004806) do
 
   create_table "customers", force: true do |t|
     t.string   "name",           null: false
+    t.integer  "state"
     t.integer  "distributor_id"
     t.integer  "user_id"
     t.integer  "price_tier_id"
@@ -69,17 +70,6 @@ ActiveRecord::Schema.define(version: 20150505004806) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "states", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "state_id"
-    t.integer  "stateable_id"
-    t.integer  "stateable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "states", ["stateable_id"], name: "index_states_on_stateable_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name",             default: "",   null: false

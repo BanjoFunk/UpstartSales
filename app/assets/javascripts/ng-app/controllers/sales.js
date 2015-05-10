@@ -2,15 +2,22 @@ angular.module('UpstartSales')
   .controller('SalesCtrl', ['$scope', '$http', 'Ability', 'Alert', '$timeout', function ($scope, $http, Ability, Alert, $timeout) {
     $scope.errors = [];
     $scope.selectedCustomer = {id: 1, contacts: []};
+    $scope.customerFocus = {}
 
     $http.get('/api/customers')
       .success(function(data, status, headers, config) {
         $scope.states = data
       })
 
+    $scope.setFocus = function(customer){
+      $scope.customerFocus = customer
+    }
+
     $scope.postSort = function(sort){
       $http.post('/api/customers/sort', { sort: sort }).
         success(function(data, status, headers, config) {
+          $scope.states = data
+          setTimeout(function(){ $('#' + $scope.customerFocus.id).focus() }, 100)
           return true
         }).
         error(function(data, status, headers, config) {
@@ -29,6 +36,7 @@ angular.module('UpstartSales')
           $scope.states.idea.push(data)
           $scope.newCustomerName = ""
           $('.hidden-cust-form').toggle("slide");
+          $("#show-customer-form").focus()
           return true
         }).
         error(function(data, status, headers, config) {
