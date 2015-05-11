@@ -33,9 +33,8 @@ angular.module('UpstartSales')
       if(newValue == "contacts"){
 
         DTInstances.getList().then(function(dtInstances) {
-          debugger
-          dtInstance1 = dtInstances.contactTable;
-          dtInstance1.changeData('/api/customers/' + $scope.selectedCustomer.id + '/customer_contacts');
+          contactsDT = dtInstances['contacts-table'];
+          contactsDT.changeData('/api/customers/' + $scope.selectedCustomer.id + '/customer_contacts');
 
         });
 
@@ -52,8 +51,10 @@ angular.module('UpstartSales')
       }).
         success(function(data, status, headers, config) {
           $scope.newContactInfo = {}
-          DTInstances.getLast().then(function(dtInstance) {
-            dtInstance.changeData('/api/customers/' + $scope.selectedCustomer.id + '/customer_contacts');
+          DTInstances.getList().then(function(dtInstances) {
+            contactsDT = dtInstances['contacts-table'];
+            contactsDT.changeData('/api/customers/' + $scope.selectedCustomer.id + '/customer_contacts');
+
           });
         }).
         error(function(data, status, headers, config) {

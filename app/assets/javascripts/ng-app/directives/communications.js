@@ -1,16 +1,16 @@
 angular.module('UpstartSales')
-  .directive('locationToggle', function() {
+  .directive('communicationToggle', function() {
     return {
       restrict: 'A',
       scope: true,
       link: function(scope, element, attrs){
         element.click(function(){
-          scope.$apply(attrs.locationToggle);
+          scope.$apply(attrs.communicationToggle);
         });
       }
     }
   })
-  .directive('locationFormEscape', function() {
+  .directive('communicationFormEscape', function() {
     return {
       restrict: 'C',
       scope: true,
@@ -18,7 +18,7 @@ angular.module('UpstartSales')
         element.keydown(function (e) {
           if (e.keyCode == 27) {  //escape
             e.stopPropagation();
-            $("#location-cancel").click()
+            $("#communication-cancel").click()
           }
         });
       }

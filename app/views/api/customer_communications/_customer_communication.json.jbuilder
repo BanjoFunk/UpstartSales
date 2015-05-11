@@ -1,0 +1,7 @@
+json.id customer_communication.id
+json.customer_id customer_communication.customer_id
+json.communication_type customer_communication.communication_type
+json.communicated_with customer_communication.communicated_with
+json.notes customer_communication.notes
+json.created_at customer_communication.created_at
+json.updated_at customer_communication.updated_at

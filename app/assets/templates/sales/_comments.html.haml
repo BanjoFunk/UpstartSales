@@ -1,2 +1,23 @@
-%h2
-  comments
+.comments-container{'ng-controller' => "CommentsCtrl"}
+  .row
+    %br
+    .col-md-12
+    .well.text-center.fade-in
+      %ul.list-unstyled
+        %li{"ng-repeat" => "comment in selectedCustomer.comments"}
+          %strong.pull-left.primary-font {{comment.user}}
+          %small.pull-right.text-muted
+            %span.glyphicon.glyphicon-time>
+            &nbsp;{{comment.created_at}}
+          %br
+          .comment-text {{comment.text}}
+        %li{"ng-show"=>"!selectedCustomer.comments.length"}
+          %span
+            No comments so far...
+      %hr
+      %form{:role => "form"}
+        .input-group
+          %input#userComment.form-control.input-lg.chat-input{:placeholder => "Your comment here...", :type => "text", "ng-model"=>"comment.text"}/
+          %span.input-group-btn
+            %button.btn.btn-primary.btn-lg{"ng-click"=>"newComment(comment, selectedCustomer)", :type => "submit"}
+              Add Comment
