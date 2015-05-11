@@ -1,6 +1,7 @@
 class Api::CustomerLocationsController < ApplicationController
 
   def index
+    @customer_locations = Customer.find(params[:customer_id]).customer_locations
   end
 
   def show

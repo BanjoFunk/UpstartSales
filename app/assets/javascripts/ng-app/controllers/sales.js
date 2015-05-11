@@ -47,7 +47,7 @@ angular.module('UpstartSales')
     $scope.showModal = false;
     $scope.toggleModal = function(customer){
       $scope.selectedCustomer = customer
-      $scope.details_category = "contacts";
+      $scope.details_category = "locations";
       $scope.showModal = !$scope.showModal;
     };
     $scope.hideModal = function() {
