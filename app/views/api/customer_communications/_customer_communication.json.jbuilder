@@ -1,4 +1,4 @@
-json.id customer_communication.id
+json.DT_RowId customer_communication.id
 json.customer_id customer_communication.customer_id
 json.communication_type customer_communication.communication_type
 json.communicated_with customer_communication.communicated_with

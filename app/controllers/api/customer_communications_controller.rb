@@ -20,6 +20,10 @@ class Api::CustomerCommunicationsController < ApplicationController
   end
 
   def update
+    params.permit!
+    @customer_communication = CustomerCommunication.find(params[:id])
+    @customer_communication.update_attributes(params[:customer_communication])
+    render :partial => "api/customer_communications/customer_communication.json", :locals => { :customer_communication => @customer_communication }
   end
 
   def destroy
@@ -31,7 +35,7 @@ class Api::CustomerCommunicationsController < ApplicationController
   private
 
   def location_params
-    params.require(:customer_communication).permit(:communication_type, :communicated_with, :notes)
+    params.require(:customer_communication).permit(:id, :communication_type, :communicated_with, :notes)
   end
 
 end
