@@ -1,5 +1,5 @@
 class Api::CustomersController < ApplicationController
-  before_action :set_batch, only: [:show, :edit, :update, :destroy, :add_comment]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy, :add_comment]
   load_and_authorize_resource :except => [:add_comment]
 
   def index

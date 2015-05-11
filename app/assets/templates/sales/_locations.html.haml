@@ -1,2 +1,36 @@
-%h2
-  locations
+.locations-container.customer-info-container{"ng-controller" => "LocationsCtrl as locations"}
+  %button.btn.btn-danger.customer-info-cancel#location-cancel.animated{'ng-show'=>"locations.showLocationForm", "location-toggle"=>"locations.toggleLocationForm()"} cancel
+  #new-location-form.new-customer-info-form.animated{'ng-show'=>"locations.showLocationForm"}
+    %h2.text-center create a new location
+    %form.form-horizontal{:novalidate => ""}
+      .form-group
+        %label.control-label.col-xs-3{:for => "nlShortName"} Short Name
+        .col-xs-9
+          %input#nlShortName.form-control.location-form-escape{:placeholder => "Short Name", :type => "text", "ng-model" => "newLocationInfo.short_name"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "nlAddress1"} Address 1
+        .col-xs-9
+          %input#nlAddress1.form-control.location-form-escape{:placeholder => "Address 1", :type => "text", "ng-model" => "newLocationInfo.address_1"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "nlAddress2"} Address 2
+        .col-xs-9
+          %input#nlAddress2.form-control.location-form-escape{:placeholder => "Address 2", :type => "text", "ng-model" => "newLocationInfo.address_2"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "nlCity"} City
+        .col-xs-9
+          %input#nlCity.form-control.location-form-escape{:placeholder => "City", :type => "text", "ng-model" => "newLocationInfo.city"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "nlState"} State
+        .col-xs-9
+          %input#nlState.form-control.location-form-escape{:placeholder => "State", :type => "text", "ng-model" => "newLocationInfo.state"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "nlZip"} Zip
+        .col-xs-9
+          %input#nlZip.form-control.location-form-escape{:placeholder => "Zip", :type => "text", "ng-model" => "newLocationInfo.zip"}
+      .form-group
+        .col-xs-offset-3.col-xs-9
+          %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "newLocation(newLocationInfo)", "location-toggle"=>"locations.toggleLocationForm()"} Add
+  .existing-locations.existing-customer-info
+    %button.btn.btn-primary.animated#location-add{'ng-show'=>"!locations.showLocationForm", "location-toggle"=>"locations.toggleLocationForm()"} add a location
+
+    %table.table.table-striped.table-bordered.table-condensed.customer-info-table#locations-table{:datatable => "", "dt-columns" => "locations.dtColumnsLocations", "dt-options" => "locations.dtOptionsLocations",  "dt-instance"=>"locations.locationsTable"}

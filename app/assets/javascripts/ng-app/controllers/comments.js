@@ -3,15 +3,15 @@ angular.module('UpstartSales')
 
     $scope.$watch('details_category', function(newValue, oldValue) {
       if(newValue == "comments"){
-        $http.get('/api/batches/' + $scope.selected_batch.id + '/comments')
+        $http.get('/api/customers/' + $scope.selectedCustomer.id + '/comments')
           .success(function(data, status, headers, config) {
-            $scope.selected_batch.comments = data;
+            $scope.selectedCustomer.comments = data;
           })
       }
     });
 
     $scope.newComment = function(comment, batch) {
-      $http.put('/api/batches/' + batch.id + '/add_comment', {
+      $http.put('/api/customers/' + batch.id + '/add_comment', {
         text: comment.text,
         id: batch.id
       }).

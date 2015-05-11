@@ -245,22 +245,22 @@ nav {
   .panel{
     margin-bottom:4px;
   }
-  .contacts-container {
-    button#contact-cancel {
+  .customer-info-container {
+    button.customer-info-cancel {
       position:absolute;
       top:82px;
       left:65px;
     }
-    .existing-contacts{
+    .existing-customer-info{
       padding:25px 50px;
-      button.toggle-contact-form {
+      button.toggle-contact-form, button.toggle-location-form {
         position:absolute;
         top:96px;
         left:65px;
       }
     }
 
-    #contact-table {
+    .customer-info-table {
       thead tr {
 
         background-color:#ACD2E3;
@@ -286,7 +286,8 @@ nav {
       }
     }
 
-    #new-contact-form {
+    .new-customer-info-form  {
+      min-height:400px;
       width:500px;
       margin: 0 auto;
       margin-top:40px;
@@ -328,7 +329,6 @@ nav {
 
 
   }
-
 
 
 

@@ -1,7 +1,7 @@
-.contacts-container{"ng-controller" => "ContactsCtrl as control"}
+.contacts-container.customer-info-container{"ng-controller" => "ContactsCtrl as control"}
 
-  %button.btn.btn-danger#contact-cancel.animated{'ng-show'=>"control.showContactForm", "contact-toggle"=>"control.toggleContactForm()"} cancel
-  #new-contact-form.animated{'ng-show'=>"control.showContactForm"}
+  %button.btn.btn-danger#contact-cancel.customer-info-cancel.animated{'ng-show'=>"control.showContactForm", "contact-toggle"=>"control.toggleContactForm()"} cancel
+  #new-contact-form.new-customer-info-form.animated{'ng-show'=>"control.showContactForm"}
     %h2.text-center create a new contact
     %form.form-horizontal{:novalidate => ""}
       .form-group
@@ -32,10 +32,10 @@
         .col-xs-offset-3.col-xs-9
           %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "newContact(newContactInfo)", "contact-toggle"=>"control.toggleContactForm()"} Add
 
-  .existing-contacts
+  .existing-contacts.existing-customer-info
     %button.btn.btn-primary.animated#contact-add{'ng-show'=>"!control.showContactForm", "contact-toggle"=>"control.toggleContactForm()"} add a contact
 
     #contact-table.animated{'ng-show'=>"!control.showContactForm"}
-      %table.table.table-striped.table-bordered.table-condensed{:datatable => "", "dt-columns" => "control.dtColumns", "dt-options" => "control.dtOptions"}
+      %table.table.table-striped.table-condensed.customer-info-table#contacts-table{:datatable => "", "dt-columns" => "control.dtColumnsContacts", "dt-options" => "control.dtOptionsContacts",  "dt-instance"=>"control.contactTable" }
 
 

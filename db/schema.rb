@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150505004806) do
 
   create_table "customer_communications", force: true do |t|
     t.integer  "customer_id"
-    t.integer  "type"
+    t.integer  "communication_type"
     t.string   "communicated_with"
     t.text     "notes"
     t.datetime "created_at"
