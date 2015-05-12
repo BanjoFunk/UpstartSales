@@ -1,143 +1,137 @@
 #navbar{'ng-include'=>"'navbar/show.html'"}
 %alerts
 .sales-tracker-container
-  .row
-    .col-md-12.text-center
-      %h1{style: 'color:white; font-size:30px;'} Upstart Sales Tracker
-      %button.btn.btn-primary.customer-form-toggle.hidden-cust-form#show-customer-form{style: "position:absolute; top:0; left:30px;", :tabindex=>1} New Customer
-      .hidden-cust-form.input-group{style:'width:400px;position:absolute; top:0px; left:30px; display:none;'}
-        %input.form-control#new-customer-name{"aria-describedby"=>"new-customer-name", :placeholder=>"Customer Name", :type => "text", :name => "newCustomerName", "ng-model"=>"newCustomerName", "customer-name-escape"=>true}
-        %div.input-group-btn
-          %button#new-customer-submit.btn.btn-primary{"ng-click"=>"addCustomer()", :type=>"submit"}
-            &nbsp;Submit&nbsp;
-          %button#cancel-customer-name.btn.btn-danger.customer-form-toggle{"aria-label" => 'cancel'}
-            %span.glyphicon.glyphicon-remove
-      %input.form-control#searchSales{:placeholder => "Search", :type => "text", "ng-model" => "searchText", style: "position:absolute; top:0; right:30px; width:200px;", :tabindex=>2}
-  .row
-    .col-md-12
-      .text-center.equal-columns-container.customer-navigation{:tabindex=>3}
-        .col-xs-3.equal-column.well
-          %h2 Idea
-          #idea-sort.ui-sortable.connected-sortable
-            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['idea'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
-              .panel.panel-customer.text-left
-                .panel-heading
-                  %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
-                    {{customer.name}}
-                  %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
-                  %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
-                .panel-body{:style => "display:none;"}
-                  .row
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-user
-                      %span x
-                      %span {{customer.contacts_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-pushpin
-                      %span x
-                      %span {{customer.locations_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-envelope
-                      %span x
-                      %span {{customer.communications_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-comment
-                      %span x
-                      %span {{customer.comments_count}}
-        .col-xs-3.equal-column.well
-          %h2 Contact
-          #contacted-sort.ui-sortable.connected-sortable
-            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['contacted'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
-              .panel.panel-customer.text-left
-                .panel-heading
-                  %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
-                    {{customer.name}}
-                  %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
-                  %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
-                .panel-body{:style => "display:none;"}
-                  .row
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-user
-                      %span x
-                      %span {{customer.contacts_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-pushpin
-                      %span x
-                      %span {{customer.locations_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-envelope
-                      %span x
-                      %span {{customer.communications_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-comment
-                      %span x
-                      %span {{customer.comments_count}}
-        .col-xs-3.equal-column.well
-          %h2 Negotiation
-          #negotiation-sort.ui-sortable.connected-sortable
-            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['negotiation'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
-              .panel.panel-customer.text-left
-                .panel-heading
-                  %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
-                    {{customer.name}}
-                  %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
-                  %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
-                .panel-body{:style => "display:none;"}
-                  .row
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-user
-                      %span x
-                      %span {{customer.contacts_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-pushpin
-                      %span x
-                      %span {{customer.locations_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-envelope
-                      %span x
-                      %span {{customer.communications_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-comment
-                      %span x
-                      %span {{customer.comments_count}}
-        .col-xs-3.equal-column.well
-          %h2 Active
-          #active-sort.ui-sortable.connected-sortable
-            .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['active'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
-              .panel.panel-customer.text-left
-                .panel-heading
-                  %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
-                    {{customer.name}}
-                  %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
-                  %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
-                .panel-body{:style => "display:none;"}
-                  .row
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-user
-                      %span x
-                      %span {{customer.contacts_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-pushpin
-                      %span x
-                      %span {{customer.locations_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-envelope
-                      %span x
-                      %span {{customer.communications_count}}
-                    .count-container.col-xs-3
-                      %span.glyphicon.glyphicon-comment
-                      %span x
-                      %span {{customer.comments_count}}
-  .row.tab-bottom
-    .col-md-12
-      .col-md-3
-        .tab-background
-      .col-md-3
-        .tab-background
-      .col-md-3
-        .tab-background
-      .col-md-3
-        .tab-background
+  .col-xs-12.text-center
+    %h1{style: 'color:white; font-size:30px;'} Upstart Sales Tracker
+    %button.btn.btn-primary.customer-form-toggle.hidden-cust-form#show-customer-form{style: "position:absolute; top:0; left:30px;", :tabindex=>1} New Customer
+    .hidden-cust-form.input-group{style:'width:400px;position:absolute; top:0px; left:30px; display:none;'}
+      %input.form-control#new-customer-name{"aria-describedby"=>"new-customer-name", :placeholder=>"Customer Name", :type => "text", :name => "newCustomerName", "ng-model"=>"newCustomerName", "customer-name-escape"=>true}
+      %div.input-group-btn
+        %button#new-customer-submit.btn.btn-primary{"ng-click"=>"addCustomer()", :type=>"submit"}
+          &nbsp;Submit&nbsp;
+        %button#cancel-customer-name.btn.btn-danger.customer-form-toggle{"aria-label" => 'cancel'}
+          %span.glyphicon.glyphicon-remove
+    %input.form-control#searchSales{:placeholder => "Search", :type => "text", "ng-model" => "searchText", style: "position:absolute; top:0; right:30px; width:200px;", :tabindex=>2}
+  .col-xs-12
+    .text-center.equal-columns-container.customer-navigation{:tabindex=>3}
+      .col-xs-3.equal-column.well
+        %h2 Idea
+        #idea-sort.ui-sortable.connected-sortable
+          .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['idea'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
+            .panel.panel-customer.text-left
+              .panel-heading
+                %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
+                  {{customer.name}}
+                %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
+              .panel-body{:style => "display:none;"}
+                .row
+                  #contacts_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-user
+                    %span x
+                    %span {{customer.contacts_count}}
+                  #locations_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-pushpin
+                    %span x
+                    %span {{customer.locations_count}}
+                  #communications_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-envelope
+                    %span x
+                    %span {{customer.communications_count}}
+                  #comments_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-comment
+                    %span x
+                    %span {{customer.comments_count}}
+      .col-xs-3.equal-column.well
+        %h2 Contact
+        #contacted-sort.ui-sortable.connected-sortable
+          .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['contacted'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
+            .panel.panel-customer.text-left
+              .panel-heading
+                %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
+                  {{customer.name}}
+                %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
+              .panel-body{:style => "display:none;"}
+                .row
+                  #contacts_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-user
+                    %span x
+                    %span {{customer.contacts_count}}
+                  #locations_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-pushpin
+                    %span x
+                    %span {{customer.locations_count}}
+                  #communications_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-envelope
+                    %span x
+                    %span {{customer.communications_count}}
+                  #comments_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-comment
+                    %span x
+                    %span {{customer.comments_count}}
+      .col-xs-3.equal-column.well
+        %h2 Negotiation
+        #negotiation-sort.ui-sortable.connected-sortable
+          .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['negotiation'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
+            .panel.panel-customer.text-left
+              .panel-heading
+                %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
+                  {{customer.name}}
+                %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
+              .panel-body{:style => "display:none;"}
+                .row
+                  #contacts_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-user
+                    %span x
+                    %span {{customer.contacts_count}}
+                  #locations_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-pushpin
+                    %span x
+                    %span {{customer.locations_count}}
+                  #communications_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-envelope
+                    %span x
+                    %span {{customer.communications_count}}
+                  #comments_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-comment
+                    %span x
+                    %span {{customer.comments_count}}
+      .col-xs-3.equal-column.well
+        %h2 Active
+        #active-sort.ui-sortable.connected-sortable
+          .customers_container.customer-navigation-stop{"ng-repeat" => "customer in states['active'] | filter:searchText | orderBy:sort_position", "id"=>"{{customer.id}}", :tabindex=>"-1", "ng-focus"=>'setFocus(customer)'}
+            .panel.panel-customer.text-left
+              .panel-heading
+                %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
+                  {{customer.name}}
+                %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
+              .panel-body{:style => "display:none;"}
+                .row
+                  #contacts_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-user
+                    %span x
+                    %span {{customer.contacts_count}}
+                  #locations_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-pushpin
+                    %span x
+                    %span {{customer.locations_count}}
+                  #communications_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-envelope
+                    %span x
+                    %span {{customer.communications_count}}
+                  #comments_count.count-container.col-xs-3
+                    %span.glyphicon.glyphicon-comment
+                    %span x
+                    %span {{customer.comments_count}}
+  .tab-bottom
+    .col-xs-12
+      .col-xs-3.tab-background
+      .col-xs-3.tab-background
+      .col-xs-3.tab-background
+      .col-xs-3.tab-background
   %br
   %br
 

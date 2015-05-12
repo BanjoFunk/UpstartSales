@@ -204,6 +204,7 @@ nav {
 
   }
 
+
   .count-container {
     text-align:center;
     background-color:#2B708C;
@@ -218,6 +219,17 @@ nav {
       margin-left:0;
     }
   }
+  #comments_count{
+    background-color:#880014;
+  }
+  #locations_count{
+    background-color:#DEA80A;
+  }
+  #communications_count{
+    background-color:#4143B8;
+  }
+
+
 
 
   .customer-navigation-stop.active-customer-nav:focus {
@@ -230,12 +242,15 @@ nav {
     padding:0 10px;
   }
 
+
   .tab-background {
     height:50px;
     background:#F5F5F5;
     padding-top:10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border:solid #2E3032 10px;
+    border-top:none;
   }
 
   .customer-tabs-container{
@@ -282,7 +297,7 @@ nav {
         color: #000
       }
       tbody tr.even {
-        background-color: #D9EDF7;
+        background-color: #DCF2F9;
       }
       tbody tr.odd {
         background-color: #FFF;
@@ -302,6 +317,34 @@ nav {
       &.animated.ng-hide-add {
         -webkit-animation-name: slideOutDown;
         animation-name: slideOutDown;
+      }
+    }
+
+    #location-add{
+      background-color:#DEA80A;
+      border-color:#C59300;
+    }
+    #locations-table {
+      thead tr {
+        background-color:#FFECBE;
+        color: #000
+      }
+      tbody tr.even {
+        background-color: #FFF8E7;
+      }
+    }
+
+    #communication-add{
+      background-color:#4143B8;
+      border-color:#3B3DA8;
+    }
+    #communications-table {
+      thead tr {
+        background-color:#B2BAE6;
+        color: #000
+      }
+      tbody tr.even {
+        background-color: #E9EDFE;
       }
     }
 
