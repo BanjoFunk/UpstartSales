@@ -35,6 +35,9 @@ angular.module('UpstartSales')
       link: function(scope, element, attrs){
         element.click(function(){
           $(element).parents('.panel-heading').siblings('.panel-body').slideToggle(300);
+          $(element).siblings('.toggle-accordion').toggle();
+          $(element).toggle();
+
         });
       }
     }
@@ -182,7 +185,7 @@ angular.module('UpstartSales')
 
             if (e.keyCode == 32) {  //space
               e.preventDefault();
-              element.find('.toggle-accordion').click();
+              element.find('.toggle-accordion').first().click();
             }
 
             if (e.keyCode == 13) {  //enter

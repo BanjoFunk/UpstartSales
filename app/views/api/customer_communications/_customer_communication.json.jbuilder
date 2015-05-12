@@ -5,3 +5,4 @@ json.communicated_with customer_communication.communicated_with
 json.notes customer_communication.notes
 json.created_at customer_communication.created_at
 json.updated_at customer_communication.updated_at
+json.type_html customer_communication.type_html

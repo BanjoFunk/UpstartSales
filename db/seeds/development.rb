@@ -37,10 +37,10 @@ cust2.customer_communications.create(:communication_type => 2, :communicated_wit
 cust3.customer_communications.create(:communication_type => 2, :communicated_with => "Steve", :notes => "Notes about a communication with steve. lalala.")
 cust4.customer_communications.create(:communication_type => 2, :communicated_with => "Steve", :notes => "Notes about a communication with steve. lalala.")
 
-cust1.customer_communications.create(:communication_type => 3, :communicated_with => "Fred", :notes => "Notes about a communication with Fred. lalala.")
-cust2.customer_communications.create(:communication_type => 3, :communicated_with => "Fred", :notes => "Notes about a communication with Fred. lalala.")
-cust3.customer_communications.create(:communication_type => 3, :communicated_with => "Fred", :notes => "Notes about a communication with Fred. lalala.")
-cust4.customer_communications.create(:communication_type => 3, :communicated_with => "Fred", :notes => "Notes about a communication with Fred. lalala.")
+cust1.customer_communications.create(:communication_type => 0, :communicated_with => "Fred", :notes => "Notes about a communication with Fred. lalala.")
+cust2.customer_communications.create(:communication_type => 0, :communicated_with => "Fred", :notes => "Notes about a communication with Fred. lalala.")
+cust3.customer_communications.create(:communication_type => 0, :communicated_with => "Fred", :notes => "Notes about a communication with Fred. lalala.")
+cust4.customer_communications.create(:communication_type => 0, :communicated_with => "Fred", :notes => "Notes about a communication with Fred. lalala.")
 
 cust1.comments.create(:user_id => admin.id, :text => "whats the status of this account?", :created_at => Time.current-21.days)
 cust1.comments.create(:user_id => brewer.id, :text => "things are coming along. waiting to hear back from Carl.", :created_at => Time.current-12.days)

@@ -27,6 +27,9 @@ class Api::CustomerCommunicationsController < ApplicationController
   end
 
   def destroy
+    @customer_communication = CustomerCommunication.find(params[:id])
+    @customer_communication.delete
+    head 200, content_type: "text/html"
   end
 
   def add_comment

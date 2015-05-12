@@ -17,7 +17,7 @@ angular.module('UpstartSales')
       }).
         success(function(data, status, headers, config) {
           batch.comments.push(data)
-          $('.chat-input').val("")
+          $('.chat-input').val("").focus()
           return true
         }).
         error(function(data, status, headers, config) {

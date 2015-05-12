@@ -180,6 +180,9 @@ nav {
 }
 .panel-customer {
   border-color: #2E3032;
+  .panel-body {
+    padding: 2px 17px;
+  }
 }
 
 .sales-tracker-container{
@@ -201,11 +204,23 @@ nav {
 
   }
 
+  .count-container {
+    text-align:center;
+    background-color:#2B708C;
+    border-radius:5px;
+    border:solid 2px white;
+    padding:5px;
+    color:white;
+    span {
+      font-size:15px;
+    }
+    &:first-child{
+      margin-left:0;
+    }
+  }
+
 
   .customer-navigation-stop.active-customer-nav:focus {
-    // border-color: rgba(126, 239, 104, 0.8);
-    // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
-
     border-color: rgba(254,202,68, 0.9);
     box-shadow: 0 0 1px 5px rgba(0, 0, 0, 0.075) inset, 0 0 8px 5px rgba(254,202,68, 0.6);
     outline: 0 none;
@@ -272,6 +287,10 @@ nav {
       tbody tr.odd {
         background-color: #FFF;
       }
+      td span.glyphicon{
+        font-size: 20px;
+        margin-right:5px;
+      }
       &.animated.ng-hide-remove {
         -webkit-animation-delay: 300ms;
         animation-delay: 300ms;
@@ -291,6 +310,7 @@ nav {
       width:500px;
       margin: 0 auto;
       margin-top:40px;
+
       .form-group {
         margin-bottom:8px;
       }

@@ -24,10 +24,26 @@
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
                     {{customer.name}}
-                  %span.pull-right.toggle-accordion{style:'cursor:pointer;'}
-                    show
+                  %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                  %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
                 .panel-body{:style => "display:none;"}
-                  Panel content
+                  .row
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-user
+                      %span x
+                      %span {{customer.contacts_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-pushpin
+                      %span x
+                      %span {{customer.locations_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-envelope
+                      %span x
+                      %span {{customer.communications_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-comment
+                      %span x
+                      %span {{customer.comments_count}}
         .col-xs-3.equal-column.well
           %h2 Contact
           #contacted-sort.ui-sortable.connected-sortable
@@ -36,10 +52,26 @@
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
                     {{customer.name}}
-                  %span.pull-right.toggle-accordion{style:'cursor:pointer;'}
-                    show
+                  %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                  %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
                 .panel-body{:style => "display:none;"}
-                  Panel content
+                  .row
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-user
+                      %span x
+                      %span {{customer.contacts_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-pushpin
+                      %span x
+                      %span {{customer.locations_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-envelope
+                      %span x
+                      %span {{customer.communications_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-comment
+                      %span x
+                      %span {{customer.comments_count}}
         .col-xs-3.equal-column.well
           %h2 Negotiation
           #negotiation-sort.ui-sortable.connected-sortable
@@ -48,10 +80,26 @@
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
                     {{customer.name}}
-                  %span.pull-right.toggle-accordion{style:'cursor:pointer;'}
-                    show
+                  %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                  %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
                 .panel-body{:style => "display:none;"}
-                  Panel content
+                  .row
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-user
+                      %span x
+                      %span {{customer.contacts_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-pushpin
+                      %span x
+                      %span {{customer.locations_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-envelope
+                      %span x
+                      %span {{customer.communications_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-comment
+                      %span x
+                      %span {{customer.comments_count}}
         .col-xs-3.equal-column.well
           %h2 Active
           #active-sort.ui-sortable.connected-sortable
@@ -60,10 +108,26 @@
                 .panel-heading
                   %h3.panel-title{"ng-click" => "toggleModal(customer)", style: 'display:inline; cursor:pointer;'}
                     {{customer.name}}
-                  %span.pull-right.toggle-accordion{style:'cursor:pointer;'}
-                    show
+                  %span.glyphicon.glyphicon-chevron-left.pull-right.toggle-accordion{style:'cursor:pointer;'}
+                  %span.glyphicon.glyphicon-chevron-down.pull-right.toggle-accordion{style:'cursor:pointer;display:none;'}
                 .panel-body{:style => "display:none;"}
-                  Panel content
+                  .row
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-user
+                      %span x
+                      %span {{customer.contacts_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-pushpin
+                      %span x
+                      %span {{customer.locations_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-envelope
+                      %span x
+                      %span {{customer.communications_count}}
+                    .count-container.col-xs-3
+                      %span.glyphicon.glyphicon-comment
+                      %span x
+                      %span {{customer.comments_count}}
   .row.tab-bottom
     .col-md-12
       .col-md-3
@@ -87,15 +151,23 @@
         {{selectedCustomer.name}}
     .modal-body
 
-      %ul.nav.nav-tabs.customer-tabs-container{:tabindex=>"0"}
+      %ul.nav.nav-tabs.customer-tabs-container
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("contacts")', 'ng-class'=>'{active: details_category=="contacts"}'}
-          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"} Contacts
+          %a.customer-tab-stop{:href=>"#", :tabindex=>"0"}
+            %span.glyphicon.glyphicon-user
+            %span Contacts
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("locations")', 'ng-class'=>'{active: details_category=="locations"}'}
-          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"} Locations
+          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"}
+            %span.glyphicon.glyphicon-pushpin
+            %span Locations
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("communications")', 'ng-class'=>'{active: details_category=="communications"}'}
-          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"} Communications Log
+          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"}
+            %span.glyphicon.glyphicon-envelope
+            %span Communications Log
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("comments")', 'ng-class'=>'{active: details_category=="comments"}'}
-          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"} Comments
+          %a.customer-tab-stop{:href=>"#", :tabindex=>"-1"}
+            %span.glyphicon.glyphicon-comment
+            %span Comments
 
 
       .customer-details{'ng-show'=>'details_category == "contacts"'}
