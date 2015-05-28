@@ -43,7 +43,7 @@ class Api::UsersController < Api::BaseController
       sign_in @user, :bypass => true
       render :json => {:msg => 'new password is set'}
     else
-      render :json => {:msg => 'error'}
+      render :json => {:errors => @user.errors}, :status => 406
     end
   end
 

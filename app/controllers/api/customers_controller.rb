@@ -33,7 +33,8 @@ class Api::CustomersController < ApplicationController
   end
 
   def destroy
-    @customer.destroy
+    @customer.delete
+    head 200, content_type: "text/html"
   end
 
   def add_comment

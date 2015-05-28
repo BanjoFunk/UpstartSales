@@ -20,7 +20,10 @@ angular.module('UpstartSales')
           return true
         })
         .error(function(data, status, headers, config) {
-          Alert.add("danger", 'sorry, something went wrong', 4000);
+          Object.keys(data.errors).forEach(function (key) {
+            var value = data.errors[key]
+            Alert.add("danger", key + ': ' + value, 2000);
+          })
         });
 
     }

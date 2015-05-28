@@ -139,12 +139,35 @@
 
 
   %modal{:title=>'test', :visible=>"$parent.showModal", :tabindex=>"-1"}
-    .modal-header
+    .modal-header{:style=>'height:80px'}
       %button.close{"aria-hidden"=>"true", "data-dismiss"=>"modal", :type=>"button", 'ng-click'=>'hideModal()', :tabindex=>"-1"} ×
-      %h2.modal-title
+      %h2.modal-title.header-customer-name
         {{selectedCustomer.name}}
-    .modal-body
 
+
+
+      / %button.btn.btn-primary.edit-customer-form-toggle.hidden-cust-edit-form#show-edit-customer-form{style: "position:absolute; top:0; right:30px;"} Edit Customer
+
+      .dropdown{style: "position:absolute; top:25px; right:60px;"}
+        %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
+          Actions
+          %span.caret
+        %ul.dropdown-menu{:role => "menu"}
+          %li{:role => "presentation"}
+            %a.edit-customer-form-toggle{:href => "#"} Edit
+          %li{:role => "presentation"}
+            %a{:href => "#", "ng-click"=>"deleteCustomer()"} Delete
+
+      .hidden-cust-edit-form.input-group{style:'width:400px; display:none; margin-top:9px;'}
+        %input.form-control#edit-customer-name{"aria-describedby"=>"edit-customer-name", :type => "text", :name => "editCustomerName", "ng-model"=>"selectedCustomer.name", "customer-name-escape"=>true}
+        %div.input-group-btn
+          %button#edit-customer-submit.btn.btn-primary{"ng-click"=>"editCustomer()", :type=>"submit"}
+            &nbsp; Update &nbsp;
+          %button.btn.btn-danger.edit-customer-form-toggle{"aria-label" => 'cancel'}
+            %span.glyphicon.glyphicon-remove
+
+
+    .modal-body
       %ul.nav.nav-tabs.customer-tabs-container
         %li{:role=>"customer_details", 'ng-click'=>'detailsNav("contacts")', 'ng-class'=>'{active: details_category=="contacts"}'}
           %a.customer-tab-stop{:href=>"#", :tabindex=>"0"}

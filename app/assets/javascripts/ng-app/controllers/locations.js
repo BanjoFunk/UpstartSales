@@ -51,7 +51,6 @@ angular.module('UpstartSales')
 
     self.toggleLocationForm = function() {
       self.showLocationForm = !self.showLocationForm
-      console.log(self.showLocationForm)
       if(self.showLocationForm == true){
         setTimeout(function(){ $("#nlShortName").focus() }, 200);
       } else {

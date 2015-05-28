@@ -44,6 +44,35 @@ angular.module('UpstartSales')
         });
     }
 
+    $scope.editCustomer = function(){
+      $http.put('/api/customers/' + $scope.selectedCustomer.id, {
+          name: $scope.selectedCustomer.name
+        }).
+        success(function(data, status, headers, config) {
+          $('.header-customer-name').toggle();
+          $('.hidden-cust-edit-form').toggle();
+          return true
+        }).
+        error(function(data, status, headers, config) {
+          Alert.add("error", 'sorry, you cannot create customers at this time. ask josh.', 4000);
+        });
+    }
+
+    $scope.deleteCustomer = function(e){
+      if ( window.confirm("is it okay to delete this customer?") ) {
+        $http.delete('/api/customers/' + $scope.selectedCustomer.id, {
+        }).
+          success(function(data, status, headers, config) {
+            $scope.states[$scope.selectedCustomer.state_name].pop($scope.selectedCustomer)
+            $scope.showModal = false;
+            Alert.add("success", $scope.selectedCustomer.name + ' has been deleted', 4000);
+          }).
+          error(function(data, status, headers, config) {
+            Alert.add("danger", 'sorry, something went wrong. ask josh.', 4000);
+          });
+      }
+    }
+
     $scope.showModal = false;
     $scope.toggleModal = function(customer){
       $scope.selectedCustomer = customer

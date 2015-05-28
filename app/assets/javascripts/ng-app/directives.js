@@ -13,6 +13,9 @@ angular.module('UpstartSales.directives', [])
             var active = $('#active-sort').sortable('toArray');
             var sort = {"idea":idea, "contacted":contacted, "negotiation":negotiation, "active":active}
             scope.postSort(sort)
+          },
+          stop: function(event, ui){
+            $(ui.item).focus()
           }
         })
       }

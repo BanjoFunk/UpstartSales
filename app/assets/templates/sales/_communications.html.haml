@@ -46,6 +46,6 @@
           %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "editCommunication(editCommunicationInfo)", "communication-toggle"=>"communications.toggleEditCommunicationForm()"} Update
 
   .existing-communications.existing-customer-info
-    %button.btn.btn-primary.animated#communication-add.animated{'ng-show'=>"!communications.showCommunicationForm", "communication-toggle"=>"communications.toggleCommunicationForm()"} add a communication
-    .animated{'ng-show'=>"!locations.showCommunicationForm"}
+    %button.btn.btn-primary.animated#communication-add.animated{'ng-show'=>"!communications.showCommunicationForm && !communications.showEditCommunicationForm", "communication-toggle"=>"communications.toggleCommunicationForm()"} add a communication
+    .animated{'ng-show'=>"!communications.showCommunicationForm && !communications.showEditCommunicationForm"}
       %table.table.table-striped.table-bordered.table-condensed.customer-info-table#communications-table{:datatable => "", "dt-columns" => "communications.dtColumnsCommunications", "dt-options" => "communications.dtOptionsCommunications",  "dt-instance"=>"communications.communicationsTable"}

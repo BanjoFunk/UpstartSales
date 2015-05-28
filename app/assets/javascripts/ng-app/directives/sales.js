@@ -12,6 +12,18 @@ angular.module('UpstartSales')
       }
     }
   })
+  .directive('editCustomerFormToggle', function() {
+    return {
+      restrict: 'C',
+      link: function(scope, element, attrs){
+        element.click(function(){
+          $('.header-customer-name').toggle();
+          $('.hidden-cust-edit-form').toggle();
+          $('#edit-customer-name').focus();
+        });
+      }
+    }
+  })
   .directive('customerNameEscape', function() {
     return {
       restrict: 'A',

@@ -66,9 +66,9 @@
           %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "editContact(editContactInfo)", "communication-toggle"=>"control.toggleEditContactForm()"} Update
 
   .existing-contacts.existing-customer-info
-    %button.btn.btn-primary.animated#contact-add.animated{'ng-show'=>"!control.showContactForm", "contact-toggle"=>"control.toggleContactForm()"} add a contact
+    %button.btn.btn-primary.animated#contact-add.animated{'ng-show'=>"!control.showContactForm && !control.showEditContactForm", "contact-toggle"=>"control.toggleContactForm()"} add a contact
 
-    .animated{'ng-show'=>"!control.showContactForm"}
+    .animated{'ng-show'=>"!control.showContactForm && !control.showEditContactForm"}
       %table.table.table-striped.table-condensed.customer-info-table#contacts-table{:datatable => "", "dt-columns" => "control.dtColumnsContacts", "dt-options" => "control.dtOptionsContacts",  "dt-instance"=>"control.contactTable" }
 
 
