@@ -1,5 +1,6 @@
 class CustomerCommunication < ActiveRecord::Base
   belongs_to :customer
+  attr_accessor :DT_RowId, :type_html
 
   COMMUNICATION_TYPES = ['email', 'phone', 'in person']
   COMMUNICATION_ICONS = ['<span class="glyphicon glyphicon-envelope"></span>', '<span class="glyphicon glyphicon-earphone"></span>', '<span class="glyphicon glyphicon-user"></span>']

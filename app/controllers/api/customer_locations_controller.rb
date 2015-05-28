@@ -14,6 +14,7 @@ class Api::CustomerLocationsController < ApplicationController
   end
 
   def create
+    params.permit!
     @customer_location = Customer.find(params[:customer_id]).customer_locations.create(params[:customer_location])
     render :partial => "api/customer_locations/customer_location.json", :locals => { :customer_location => @customer_location }
   end
