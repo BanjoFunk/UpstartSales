@@ -16,7 +16,7 @@ body {
 }
 
 .modal-body{
-  min-height:500px;
+  min-height:550px;
 }
 .modal-dialog{
   width:950px;
@@ -306,17 +306,23 @@ nav {
         font-size: 20px;
         margin-right:5px;
       }
-      &.animated.ng-hide-remove {
+    }
+
+    .existing-locations, .existing-contacts, .existing-communications{
+
+      .animated.ng-hide-remove {
         -webkit-animation-delay: 300ms;
         animation-delay: 300ms;
-        -webkit-animation-duration: 500ms;
-        animation-duration: 500ms;
-        -webkit-animation-name: slideInUp;
-        animation-name: slideInUp;
+        -webkit-animation-duration: 300ms;
+        animation-duration: 300ms;
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
       }
-      &.animated.ng-hide-add {
-        -webkit-animation-name: slideOutDown;
-        animation-name: slideOutDown;
+      .animated.ng-hide-add {
+        -webkit-animation-duration: 0ms;
+        animation-duration: 0ms;
+        -webkit-animation-name: fadeOut;
+        animation-name: fadeOut;
       }
     }
 
@@ -361,8 +367,8 @@ nav {
         margin-bottom:25px;
       }
       &.animated.ng-hide-add {
-        -webkit-animation-duration: 300ms;
-        animation-duration: 300ms;
+        -webkit-animation-duration: 200ms;
+        animation-duration: 200ms;
         -webkit-animation-name: fadeOut;
         animation-name: fadeOut;
       }
@@ -373,12 +379,12 @@ nav {
     }
 
     button.animated.ng-hide-add{
-      -webkit-animation-delay: 0ms;
-      animation-delay: 0ms;
+      -webkit-animation-delay: 10ms;
+      animation-delay: 10ms;
       -webkit-animation-name: fadeOut;
       animation-name: fadeOut;
-      -webkit-animation-duration: 0ms;
-      animation-duration: 0ms;
+      -webkit-animation-duration: 200ms;
+      animation-duration: 200ms;
     }
 
     button.animated.ng-hide-remove{

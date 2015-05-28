@@ -32,5 +32,5 @@
           %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "newLocation(newLocationInfo)", "location-toggle"=>"locations.toggleLocationForm()"} Add
   .existing-locations.existing-customer-info
     %button.btn.btn-primary.animated#location-add{'ng-show'=>"!locations.showLocationForm", "location-toggle"=>"locations.toggleLocationForm()"} add a location
-
-    %table.table.table-striped.table-bordered.table-condensed.customer-info-table#locations-table{:datatable => "", "dt-columns" => "locations.dtColumnsLocations", "dt-options" => "locations.dtOptionsLocations",  "dt-instance"=>"locations.locationsTable"}
+    .animated{'ng-show'=>"!locations.showLocationForm"}
+      %table.table.table-striped.table-bordered.table-condensed.customer-info-table#locations-table.animated{:datatable => "", "dt-columns" => "locations.dtColumnsLocations", "dt-options" => "locations.dtOptionsLocations",  "dt-instance"=>"locations.locationsTable"}

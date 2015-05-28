@@ -26,7 +26,9 @@ angular.module('UpstartSales')
         }
       });
     self.dtColumnsCommunications = [
-      DTColumnBuilder.newColumn('type_html').withTitle('how').withClass('communication_type'),
+      DTColumnBuilder.newColumn('type_html').withTitle('how').withClass('communication_type').renderWith(function(data, type, communication) {
+            return "<span communication_type_id=" + communication.communication_type + " class='edit-communication'>" + communication.type_html + "</span>"
+        }),
       DTColumnBuilder.newColumn('communicated_with').withTitle('who').withClass('communicated_with'),
       DTColumnBuilder.newColumn('notes').withTitle('notes').withClass('notes').withOption('bSortable', false),
       DTColumnBuilder.newColumn('actions').withTitle('actions').withClass('text-center').renderWith(function(data, type, communication) {
@@ -100,10 +102,9 @@ angular.module('UpstartSales')
     };
 
     $scope.showEditCommunication = function(e){
-      $scope.editCommunicationInfo.id = $(e.target).parents('tr').attr('id')
-      $scope.editCommunicationInfo.communication_type = $(e.target).parents('tr').children('.communication_type').text();
-      $scope.editCommunicationInfo.communicated_with = $(e.target).parents('tr').children('.communicated_with').text();
-      $scope.editCommunicationInfo.notes = $(e.target).parents('tr').children('.notes').text();
+      var communicationId = parseInt($(e.target).parents('tr').attr('id'))
+      $scope.editCommunicationInfo = $.grep(communicationsDT.DataTable.data(), function(e){ return e.DT_RowId == communicationId; })[0];
+
       $scope.$apply(function(){
         self.showEditCommunicationForm = !self.showEditCommunicationForm
         setTimeout(function(){ $("#edit_communication_type").focus() }, 200);

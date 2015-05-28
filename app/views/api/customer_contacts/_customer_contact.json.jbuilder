@@ -1,3 +1,4 @@
+json.DT_RowId customer_contact.id
 json.id customer_contact.id
 json.customer_id customer_contact.customer_id
 json.primary customer_contact.primary

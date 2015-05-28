@@ -6,18 +6,18 @@
       .form-group
         %label.control-label.col-xs-4 Communication Type
         .col-xs-8
-          %select.form-control#new_communication_type.communication-form-escape{"ng-model" => "newCommunicationInfo.communication_type","ng-init"=>"newCommunicationInfo.communication_type=0"}
+          %select.form-control#new_communication_type{"ng-model" => "newCommunicationInfo.communication_type","ng-init"=>"newCommunicationInfo.communication_type=0"}
             %option{:value => "0"} Email
             %option{:value => "1"} Phone
             %option{:value => "2"} In Person
       .form-group
         %label.control-label.col-xs-4 Communicated With
         .col-xs-8
-          %input#new_communicated_with.form-control.communication-form-escape{:placeholder => "Communicated With", :type => "text", "ng-model" => "newCommunicationInfo.communicated_with"}
+          %input#new_communicated_with.form-control{:placeholder => "Communicated With", :type => "text", "ng-model" => "newCommunicationInfo.communicated_with"}
       .form-group
         %label.control-label.col-xs-4 Notes
         .col-xs-8
-          %textarea#new_notes.form-control.communication-form-escape{:placeholder => "Notes", :rows => "3", "ng-model" => "newCommunicationInfo.notes"}
+          %textarea#new_notes.form-control{:placeholder => "Notes", :rows => "3", "ng-model" => "newCommunicationInfo.notes"}
       .form-group
         .col-xs-offset-4.col-xs-8
           %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "newCommunication(newCommunicationInfo)", "communication-toggle"=>"communications.toggleCommunicationForm()"} Add
@@ -29,22 +29,23 @@
       .form-group
         %label.control-label.col-xs-4 Communication Type
         .col-xs-8
-          %select.form-control#edit_communication_type.communication-form-escape{"ng-model" => "editCommunicationInfo.communication_type"}
+          %select.form-control#edit_communication_type{"ng-model" => "editCommunicationInfo.communication_type"}
             %option{:value => "0"} Email
             %option{:value => "1"} Phone
             %option{:value => "2"} In Person
       .form-group
         %label.control-label.col-xs-3 Communicated With
         .col-xs-9
-          %input.form-control#edit_communicated_with.communication-form-escape{:placeholder => "Communicated With", :type => "text", "ng-model" => "editCommunicationInfo.communicated_with"}
+          %input.form-control#edit_communicated_with{:placeholder => "Communicated With", :type => "text", "ng-model" => "editCommunicationInfo.communicated_with"}
       .form-group
         %label.control-label.col-xs-3 Notes
         .col-xs-9
-          %input.form-control#edit_notes.communication-form-escape{:placeholder => "Notes", :type => "text", "ng-model" => "editCommunicationInfo.notes"}
+          %input.form-control#edit_notes{:placeholder => "Notes", :type => "text", "ng-model" => "editCommunicationInfo.notes"}
       .form-group
         .col-xs-offset-3.col-xs-9
           %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "editCommunication(editCommunicationInfo)", "communication-toggle"=>"communications.toggleEditCommunicationForm()"} Update
 
   .existing-communications.existing-customer-info
-    %button.btn.btn-primary.animated#communication-add{'ng-show'=>"!communications.showCommunicationForm", "communication-toggle"=>"communications.toggleCommunicationForm()"} add a communication
-    %table.table.table-striped.table-bordered.table-condensed.customer-info-table#communications-table{:datatable => "", "dt-columns" => "communications.dtColumnsCommunications", "dt-options" => "communications.dtOptionsCommunications",  "dt-instance"=>"communications.communicationsTable"}
+    %button.btn.btn-primary.animated#communication-add.animated{'ng-show'=>"!communications.showCommunicationForm", "communication-toggle"=>"communications.toggleCommunicationForm()"} add a communication
+    .animated{'ng-show'=>"!locations.showCommunicationForm"}
+      %table.table.table-striped.table-bordered.table-condensed.customer-info-table#communications-table{:datatable => "", "dt-columns" => "communications.dtColumnsCommunications", "dt-options" => "communications.dtOptionsCommunications",  "dt-instance"=>"communications.communicationsTable"}

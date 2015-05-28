@@ -19,9 +19,16 @@ class Api::CustomerContactsController < ApplicationController
   end
 
   def update
+    params.permit!
+    @customer_contact = CustomerContact.find(params[:id])
+    @customer_contact.update_attributes(params[:customer_contact])
+    render :partial => "api/customer_contacts/customer_contact.json", :locals => { :customer_contact => @customer_contact }
   end
 
   def destroy
+    @customer_contact = CustomerContact.find(params[:id])
+    @customer_contact.delete
+    head 200, content_type: "text/html"
   end
 
   def add_comment

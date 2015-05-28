@@ -32,10 +32,44 @@
         .col-xs-offset-3.col-xs-9
           %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "newContact(newContactInfo)", "contact-toggle"=>"control.toggleContactForm()"} Add
 
-  .existing-contacts.existing-customer-info
-    %button.btn.btn-primary.animated#contact-add{'ng-show'=>"!control.showContactForm", "contact-toggle"=>"control.toggleContactForm()"} add a contact
 
-    #contact-table.animated{'ng-show'=>"!control.showContactForm"}
+  %button.btn.btn-danger.customer-info-cancel#contact-cancel.animated{'ng-show'=>"control.showEditContactForm", "contact-toggle"=>"control.toggleEditContactForm()"} cancel
+
+  #edit-contact-form.new-customer-info-form.animated{'ng-show'=>"control.showEditContactForm"}
+    %h2.text-center create a edit contact
+    %form.form-horizontal{:novalidate => ""}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncFirstName"} First Name
+        .col-xs-9
+          %input#ncFirstName.form-control.form-escape{:placeholder => "First Name", :type => "text", "ng-model" => "editContactInfo.first_name"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncLastName"} Last Name
+        .col-xs-9
+          %input#ncLastName.form-control.form-escape{:placeholder => "Last Name", :type => "text", "ng-model" => "editContactInfo.last_name"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncEmail"} Email
+        .col-xs-9
+          %input#ncEmail.form-control.form-escape{:placeholder => "Email", :type => "email", "ng-model" => "editContactInfo.email"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncPhone"} Phone
+        .col-xs-9
+          %input#ncPhone.form-control.form-escape{:placeholder => "Phone", :type => "tel", "ng-model" => "editContactInfo.phone"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncPosition"} Position
+        .col-xs-9
+          %input#ncPosition.form-control.form-escape{:placeholder => "Position", :type => "text", "ng-model" => "editContactInfo.position"}
+      .form-group
+        %label.control-label.col-xs-3{:for => "ncNotes"} Notes
+        .col-xs-9
+          %textarea#ncNotes.form-control.form-escape{rows:"3", :placeholder => "Notes", "ng-model" => "editContactInfo.notes"}
+      .form-group
+        .col-xs-offset-3.col-xs-9
+          %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "editContact(editContactInfo)", "communication-toggle"=>"control.toggleEditContactForm()"} Update
+
+  .existing-contacts.existing-customer-info
+    %button.btn.btn-primary.animated#contact-add.animated{'ng-show'=>"!control.showContactForm", "contact-toggle"=>"control.toggleContactForm()"} add a contact
+
+    .animated{'ng-show'=>"!control.showContactForm"}
       %table.table.table-striped.table-condensed.customer-info-table#contacts-table{:datatable => "", "dt-columns" => "control.dtColumnsContacts", "dt-options" => "control.dtOptionsContacts",  "dt-instance"=>"control.contactTable" }
 
 
