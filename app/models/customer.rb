@@ -5,6 +5,8 @@ class Customer < ActiveRecord::Base
   has_many :customer_communications
   belongs_to :user
 
+  scope :real, lambda { where.not(:state => 99) }
+
   STATES = ['idea', 'contacted', 'negotiation', 'active']
 
   def state_name

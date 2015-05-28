@@ -3,8 +3,8 @@ class Api::CustomersController < ApplicationController
   load_and_authorize_resource :except => [:add_comment]
 
   def index
-    @customers = Customer.all
-    @states = Customer.order('sort_position ASC').all.group_by(&:state_name)
+    @customers = Customer.real
+    @states = Customer.order('sort_position ASC').real.group_by(&:state_name)
   end
 
   def show

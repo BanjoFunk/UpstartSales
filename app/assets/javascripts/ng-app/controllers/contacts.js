@@ -9,6 +9,8 @@ angular.module('UpstartSales')
     $scope.editContactInfo = {}
     self.showEditContactForm = false
 
+
+
     self.dtOptionsContacts = DTOptionsBuilder
       .fromSource('/api/customers/' + $scope.selectedCustomer.id + '/customer_contacts')
       .withBootstrap()

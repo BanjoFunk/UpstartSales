@@ -1,1 +1,2 @@
 admin = User.create(:email => 'josh@bcjbeverage.com', :first_name => "Josh", :last_name => "Garner", :password => 'kombucha', :password_confirmation => 'kombucha', :roles => [:admin])
+cust1 = Customer.create(:name => 'placeholder', :user_id => 1, :distributor_id => 99, :price_tier_id => 1, :state => 99)
