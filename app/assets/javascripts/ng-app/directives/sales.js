@@ -41,6 +41,25 @@ angular.module('UpstartSales')
       }
     }
   })
+  .directive('editCustomerNameEscape', function() {
+    return {
+      restrict: 'A',
+      scope: false,
+      link: function(scope, element, attrs){
+        element.keydown(function (e) {
+          if (e.keyCode == 27) {  //escape
+            e.stopPropagation();
+            $("#cancel-edit-customer-name").click()
+            $("#customer-actions-drop").focus()
+          }
+          if (e.keyCode == 13) {  //enter
+            e.stopPropagation();
+            $("#edit-customer-submit").click()
+          }
+        });
+      }
+    }
+  })
   .directive('toggleAccordion', function() {
     return {
       restrict: 'C',

@@ -149,7 +149,7 @@
       / %button.btn.btn-primary.edit-customer-form-toggle.hidden-cust-edit-form#show-edit-customer-form{style: "position:absolute; top:0; right:30px;"} Edit Customer
 
       .dropdown{style: "position:absolute; top:25px; right:60px;"}
-        %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
+        %button#customer-actions-drop.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
           Actions
           %span.caret
         %ul.dropdown-menu{:role => "menu"}
@@ -159,11 +159,11 @@
             %a{:href => "#", "ng-click"=>"deleteCustomer()"} Delete
 
       .hidden-cust-edit-form.input-group{style:'width:400px; display:none; margin-top:9px;'}
-        %input.form-control#edit-customer-name{"aria-describedby"=>"edit-customer-name", :type => "text", :name => "editCustomerName", "ng-model"=>"selectedCustomer.name", "customer-name-escape"=>true}
+        %input.form-control#edit-customer-name{"aria-describedby"=>"edit-customer-name", :type => "text", :name => "editCustomerName", "ng-model"=>"selectedCustomer.name", "edit-customer-name-escape"=>true}
         %div.input-group-btn
           %button#edit-customer-submit.btn.btn-primary{"ng-click"=>"editCustomer()", :type=>"submit"}
             &nbsp; Update &nbsp;
-          %button.btn.btn-danger.edit-customer-form-toggle{"aria-label" => 'cancel'}
+          %button.btn.btn-danger.edit-customer-form-toggle#cancel-edit-customer-name{"aria-label" => 'cancel'}
             %span.glyphicon.glyphicon-remove
 
 

@@ -13,6 +13,10 @@
         .col-xs-9
           %input#ncLastName.form-control.form-escape{:placeholder => "Last Name", :type => "text", "ng-model" => "newContactInfo.last_name"}
       .form-group
+        %label.control-label.col-xs-3{:for => "ncPosition"} Position
+        .col-xs-9
+          %input#ncPosition.form-control.form-escape{:placeholder => "Position", :type => "text", "ng-model" => "newContactInfo.position"}
+      .form-group
         %label.control-label.col-xs-3{:for => "ncEmail"} Email
         .col-xs-9
           %input#ncEmail.form-control.form-escape{:placeholder => "Email", :type => "email", "ng-model" => "newContactInfo.email"}
@@ -20,14 +24,10 @@
         %label.control-label.col-xs-3{:for => "ncPhone"} Phone
         .col-xs-9
           %input#ncPhone.form-control.form-escape{:placeholder => "Phone", :type => "tel", "ng-model" => "newContactInfo.phone"}
-      .form-group
-        %label.control-label.col-xs-3{:for => "ncPosition"} Position
-        .col-xs-9
-          %input#ncPosition.form-control.form-escape{:placeholder => "Position", :type => "text", "ng-model" => "newContactInfo.position"}
-      .form-group
-        %label.control-label.col-xs-3{:for => "ncNotes"} Notes
-        .col-xs-9
-          %textarea#ncNotes.form-control.form-escape{rows:"3", :placeholder => "Notes", "ng-model" => "newContactInfo.notes"}
+      / .form-group
+      /   %label.control-label.col-xs-3{:for => "ncNotes"} Notes
+      /   .col-xs-9
+      /     %textarea#ncNotes.form-control.form-escape{rows:"3", :placeholder => "Notes", "ng-model" => "newContactInfo.notes"}
       .form-group
         .col-xs-offset-3.col-xs-9
           %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "newContact(newContactInfo)", "contact-toggle"=>"control.toggleContactForm()"} Add
@@ -46,6 +46,10 @@
         .col-xs-9
           %input#ncLastName.form-control.form-escape{:placeholder => "Last Name", :type => "text", "ng-model" => "editContactInfo.last_name"}
       .form-group
+        %label.control-label.col-xs-3{:for => "ncPosition"} Position
+        .col-xs-9
+          %input#ncPosition.form-control.form-escape{:placeholder => "Position", :type => "text", "ng-model" => "editContactInfo.position"}
+      .form-group
         %label.control-label.col-xs-3{:for => "ncEmail"} Email
         .col-xs-9
           %input#ncEmail.form-control.form-escape{:placeholder => "Email", :type => "email", "ng-model" => "editContactInfo.email"}
@@ -53,14 +57,10 @@
         %label.control-label.col-xs-3{:for => "ncPhone"} Phone
         .col-xs-9
           %input#ncPhone.form-control.form-escape{:placeholder => "Phone", :type => "tel", "ng-model" => "editContactInfo.phone"}
-      .form-group
-        %label.control-label.col-xs-3{:for => "ncPosition"} Position
-        .col-xs-9
-          %input#ncPosition.form-control.form-escape{:placeholder => "Position", :type => "text", "ng-model" => "editContactInfo.position"}
-      .form-group
-        %label.control-label.col-xs-3{:for => "ncNotes"} Notes
-        .col-xs-9
-          %textarea#ncNotes.form-control.form-escape{rows:"3", :placeholder => "Notes", "ng-model" => "editContactInfo.notes"}
+      / .form-group
+      /   %label.control-label.col-xs-3{:for => "ncNotes"} Notes
+      /   .col-xs-9
+      /     %textarea#ncNotes.form-control.form-escape{rows:"3", :placeholder => "Notes", "ng-model" => "editContactInfo.notes"}
       .form-group
         .col-xs-offset-3.col-xs-9
           %button.btn.btn-primary.animate-show{:type => "submit", "ng-click" => "editContact(editContactInfo)", "communication-toggle"=>"control.toggleEditContactForm()"} Update
