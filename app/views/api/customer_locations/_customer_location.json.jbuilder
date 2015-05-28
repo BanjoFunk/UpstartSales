@@ -1,3 +1,4 @@
+json.DT_RowId customer_location.id
 json.id customer_location.id
 json.customer_id customer_location.customer_id
 json.short_name customer_location.short_name

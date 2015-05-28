@@ -14,15 +14,21 @@ class Api::CustomerLocationsController < ApplicationController
   end
 
   def create
-    params.permit!
     @customer_location = Customer.find(params[:customer_id]).customer_locations.create(params[:customer_location])
     render :partial => "api/customer_locations/customer_location.json", :locals => { :customer_location => @customer_location }
   end
 
   def update
+    params.permit!
+    @customer_location = CustomerLocation.find(params[:id])
+    @customer_location.update_attributes(params[:customer_location])
+    render :partial => "api/customer_locations/customer_location.json", :locals => { :customer_location => @customer_location }
   end
 
   def destroy
+    @customer_location = CustomerLocation.find(params[:id])
+    @customer_location.delete
+    head 200, content_type: "text/html"
   end
 
   def add_comment

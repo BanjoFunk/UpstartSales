@@ -3,22 +3,12 @@ angular.module('UpstartSales')
     function ($scope, $location, Session, Ability, $http, Alert, DTOptionsBuilder, DTColumnBuilder, DTInstances) {
 
     var self = this
+    self.contactTable = {}
     $scope.newContactInfo = {}
     self.showContactForm = false
     $scope.editContactInfo = {}
     self.showEditContactForm = false
 
-
-    self.toggleContactForm = function() {
-      self.showContactForm = !self.showContactForm
-      if(self.showContactForm == true){
-        setTimeout(function(){ $("#ncFirstName").focus() }, 200);
-      } else {
-        setTimeout(function(){ $("#contact-add").focus() }, 200);
-      }
-    };
-
-    self.contactTable = {}
     self.dtOptionsContacts = DTOptionsBuilder
       .fromSource('/api/customers/' + $scope.selectedCustomer.id + '/customer_contacts')
       .withBootstrap()
